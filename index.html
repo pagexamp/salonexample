@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJEMPLO WEB | Salón de Belleza & Academia Presencial en Hidalgo</title>
+  <meta name="description" content="EJEMPLO WEB: Salón de belleza de alta gama, gestión de sucursales, trabajadoras por horarios y agenda autoadministrable en Hidalgo, México.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Leaflet.js Real Interactive Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <nav class="navbar">
+    <a href="#" class="logo-container">
+      <div class="logo-icon">E</div>
+      <div class="logo-text">
+        <span class="brand-name">EJEMPLO WEB</span>
+        <span class="brand-sub">Salón & Academia Hidalgo</span>
+      </div>
+    </a>
+    
+    <ul class="nav-links">
+      <li><a href="#experiencia" class="nav-link active">Inicio</a></li>
+      <li><a href="#oferta" class="nav-link">Servicios & Cursos</a></li>
+      <li><a href="#sedes" class="nav-link">Mapa Hidalgo</a></li>
+      <li><a href="#galeria" class="nav-link">Egresadas</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="mode-toggle-btn" id="modeToggleBtn">
+        <i class="fa-solid fa-sliders"></i> Panel Admin / Agenda
+      </button>
+      <button class="btn btn-gold" onclick="openBookModal()">💅 Agendar Cita</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="experiencia">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-sparkles"></i> Salón de Belleza & Academia 100% Presencial en Hidalgo
+      </div>
+      <h1 class="hero-title">EJEMPLO WEB <br><span class="text-gradient-gold">Belleza & Formación</span></h1>
+      <p class="hero-subtitle">
+        Sede principal en Pachuca de Soto y red de talleres itinerantes presenciales en todo el Estado de Hidalgo.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#oferta" class="btn btn-gold" onclick="document.querySelector('[data-tab=\'tab-salon\']').click()">
+          <i class="fa-solid fa-calendar-check"></i> Reservar Servicio en Salón
+        </a>
+        <a href="#oferta" class="btn btn-rose" onclick="document.querySelector('[data-tab=\'tab-cursos\']').click()">
+          <i class="fa-solid fa-graduation-cap"></i> Ver Cursos Presenciales
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <h3>+1,500</h3>
+          <p>Clientes Atendidos</p>
+        </div>
+        <div class="stat-item">
+          <h3>+480</h3>
+          <p>Alumnas Egresadas</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Hidalgo & Precios MXN</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Dual Content Section -->
+  <section class="section" id="oferta">
+    <div class="section-header">
+      <span class="section-tag">Nuestra Oferta Principal</span>
+      <h2 class="section-title">Servicios & Cursos en EJEMPLO WEB</h2>
+      <p class="section-desc">Precios expresados en Pesos Mexicanos ($ MXN). Selecciona tu experiencia en salón o capacitación presencial.</p>
+    </div>
+
+    <!-- Dual Switcher Controls -->
+    <div class="dual-switcher-container">
+      <div class="dual-switcher">
+        <button class="switch-btn active" data-tab="tab-salon">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Salón de Belleza
+        </button>
+        <button class="switch-btn" data-tab="tab-cursos">
+          <i class="fa-solid fa-certificate"></i> Cursos Presenciales & Sedes
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab 1: Salón de Belleza -->
+    <div class="tab-content active" id="tab-salon">
+      
+      <!-- Category Filters -->
+      <div class="category-filters">
+        <button class="filter-chip active" data-cat="all">Todos los Servicios</button>
+        <button class="filter-chip" data-cat="unas">💅 Uñas & Gel Art</button>
+        <button class="filter-chip" data-cat="pestanas">👁️ Pestañas & Cejas</button>
+        <button class="filter-chip" data-cat="cabello">💇‍♀️ Cabello & Balayage</button>
+      </div>
+
+      <!-- Rendered Grid Container -->
+      <div class="services-grid" id="servicesGridContainer"></div>
+    </div>
+
+    <!-- Tab 2: Cursos Presenciales & Sedes -->
+    <div class="tab-content" id="tab-cursos">
+      <div class="courses-grid">
+        
+        <!-- Course Card 1 -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="images/course_nails.jpg" alt="Curso de Uñas Esculpidas">
+            <span class="course-badge-presencial"><i class="fa-solid fa-users"></i> 100% Presencial</span>
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Master en Uñas Esculpidas & Polygel</h3>
+            <p class="course-desc">Aprende desde cero la estructura perfecta, manicura rusa, control de producto y nail art de tendencia con práctica en modelo real.</p>
+            
+            <ul class="course-features">
+              <li><i class="fa-solid fa-check"></i> <strong>Inversión:</strong> $3,500 MXN (Incluye Kit Completo)</li>
+              <li><i class="fa-solid fa-clock"></i> <strong>Duración:</strong> 2 Días (16 Horas intensivas)</li>
+              <li><i class="fa-solid fa-certificate"></i> <strong>Certificado:</strong> Aval con validez curricular</li>
+              <li><i class="fa-solid fa-location-dot"></i> <strong>Salón Pachuca:</strong> Próximo 12 y 13 de Agosto</li>
+            </ul>
+
+            <div class="course-footer">
+              <div class="course-actions">
+                <button class="btn btn-gold" onclick="openCourseModal('Master en Uñas Esculpidas & Polygel')">
+                  <i class="fa-solid fa-ticket"></i> Reservar Salón
+                </button>
+                <button class="btn btn-outline" onclick="openCityModal()">
+                  <i class="fa-solid fa-map-pin"></i> Pedir en mi Municipio
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Card 2 -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="images/course_lashes.jpg" alt="Masterclass Pestañas y Cejas">
+            <span class="course-badge-presencial"><i class="fa-solid fa-users"></i> 100% Presencial</span>
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Lash Artist & Brow Mastery</h3>
+            <p class="course-desc">Técnica clásica 1 a 1, Volumen Ruso, visagismo de cejas y laminado. Práctica supervisada directamente por la instructora máster.</p>
+            
+            <ul class="course-features">
+              <li><i class="fa-solid fa-check"></i> <strong>Inversión:</strong> $2,800 MXN (Incluye Kit Pro)</li>
+              <li><i class="fa-solid fa-clock"></i> <strong>Duración:</strong> 1 Día intensivo (9 Horas)</li>
+              <li><i class="fa-solid fa-certificate"></i> <strong>Certificado:</strong> Diploma de Especialización</li>
+              <li><i class="fa-solid fa-location-dot"></i> <strong>Salón Pachuca:</strong> Próximo 19 de Agosto</li>
+            </ul>
+
+            <div class="course-footer">
+              <div class="course-actions">
+                <button class="btn btn-gold" onclick="openCourseModal('Lash Artist & Brow Mastery')">
+                  <i class="fa-solid fa-ticket"></i> Reservar Salón
+                </button>
+                <button class="btn btn-outline" onclick="openCityModal()">
+                  <i class="fa-solid fa-map-pin"></i> Pedir en mi Municipio
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="section" id="sedes">
+    <div class="section-header">
+      <span class="section-tag">Ubicación & Cobertura en Hidalgo</span>
+      <h2 class="section-title">Mapa de Sedes Presenciales en Hidalgo</h2>
+      <p class="section-desc">Visítanos en nuestro Salón Principal en Pachuca de Soto o explora el mapa interactivo en vivo con las sedes itinerantes en el Estado de Hidalgo.</p>
+    </div>
+
+    <div class="sedes-container">
+      <div class="map-visual-card">
+        <div class="map-header-bar">
+          <span style="font-weight: 600; font-size: 0.95rem; color: var(--accent-gold);">
+            <i class="fa-solid fa-map-location-dot"></i> Estado de Hidalgo - Mapa Interactivo en Vivo
+          </span>
+          <span style="font-size: 0.78rem; background: rgba(46, 204, 113, 0.15); color: #2ecc71; padding: 0.2rem 0.7rem; border-radius: 999px; font-weight: 600;">
+            <i class="fa-solid fa-circle" style="font-size: 0.55rem;"></i> Leaflet OpenStreetMap Active
+          </span>
+        </div>
+
+        <div id="hidalgoMap"></div>
+      </div>
+
+      <div class="sedes-list-panel">
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-building-circle-check text-gradient-gold"></i> Grupos Activos en Hidalgo</h3>
+        
+        <div class="sede-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong>📍 Tulancingo de Bravo (Curso Uñas)</strong>
+            <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700;">87% Lleno</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">7 de 8 cupos asegurados para fecha presencial.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 87%;"></div>
+          </div>
+        </div>
+
+        <div class="sede-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong>📍 Tula de Allende (Curso Pestañas)</strong>
+            <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700;">75% Lleno</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">6 de 8 cupos asegurados.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 75%;"></div>
+          </div>
+        </div>
+
+        <div class="sede-card-item">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong>📍 Mineral del Monte (Curso Polygel)</strong>
+            <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700;">62% Lleno</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">5 de 8 cupos asegurados.</p>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 62%;"></div>
+          </div>
+        </div>
+
+        <button class="btn btn-rose" onclick="openCityModal()" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+          <i class="fa-solid fa-plus-circle"></i> Solicitar mi Municipio en Hidalgo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery / Egresadas Showcase -->
+  <section class="section before-after-section" id="galeria">
+    <div class="section-header">
+      <span class="section-tag">Testimonios Reales</span>
+      <h2 class="section-title">Egresadas y Clientas Satisfechas</h2>
+      <p class="section-desc">Conoce la experiencia de quienes han sido parte de EJEMPLO WEB Hidalgo.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto;">
+      <div style="background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border-light);">
+        <h4 style="color: var(--accent-gold); margin-bottom: 0.5rem;"><i class="fa-solid fa-quote-left"></i> "Inicié mi propio negocio en Tulancingo"</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">"Tomé la capacitación presencial en la sede. La atención personalizada y el kit me ayudaron a empezar a atender mis propias clientas de inmediato."</p>
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--gradient-rose); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">M</div>
+          <div>
+            <strong style="font-size: 0.9rem;">Mariana S.</strong><br>
+            <small style="color: var(--text-muted);">Egresada Presencial Hidalgo</small>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border-light);">
+        <h4 style="color: var(--accent-gold); margin-bottom: 0.5rem;"><i class="fa-solid fa-quote-left"></i> "Puntualidad en Pachuca"</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">"Me encanta agendar online porque sé exactamente a qué hora entro y a qué hora salgo en el salón de Pachuca. Las trabajadoras son súper profesionales."</p>
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--gradient-gold); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">C</div>
+          <div>
+            <strong style="font-size: 0.9rem;">Carla G.</strong><br>
+            <small style="color: var(--text-muted);">Cliente Salón Pachuca</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTO-MANAGED ADMIN PANEL -->
+  <div class="admin-panel-section" id="panelAdmin">
+    
+    <div class="admin-top-banner">
+      <div>
+        <span class="section-tag" style="margin-bottom: 0.2rem;">Panel de Control Autoadministrable</span>
+        <h2><i class="fa-solid fa-chart-pie text-gradient-gold"></i> Dashboard Integral del Negocio</h2>
+        <p>Control de citas, estado de sucursales, turnos de trabajadoras y configuración de catálogo de servicios.</p>
+      </div>
+      <button class="btn btn-gold" onclick="document.getElementById('modeToggleBtn').click()">
+        <i class="fa-solid fa-store"></i> Regresar al Sitio Cliente
+      </button>
+    </div>
+
+    <!-- Admin Stats Grid -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card">
+        <div class="stat-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+          <h3 id="adminTotalBookings">0</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Citas Agendadas</p>
+        </div>
+      </div>
+      
+      <div class="admin-stat-card">
+        <div class="stat-icon-box"><i class="fa-solid fa-coins"></i></div>
+        <div>
+          <h3 id="adminTotalRevenue" style="color: var(--accent-gold);">$0 MXN</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Ingresos Estimados ($ MXN)</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="stat-icon-box"><i class="fa-solid fa-store"></i></div>
+        <div>
+          <h3 id="adminTotalSucursales" style="color: var(--accent-green);">0</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Sucursales Activas</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="stat-icon-box"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <h3 id="adminTotalWorkers" style="color: #3498db;">0</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Trabajadoras Activas</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="stat-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div>
+          <h3 id="adminTotalServices" style="color: var(--accent-rose);">0</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Servicios Configurados</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Layout Grid -->
+    <div class="admin-grid-layout">
+      
+      <!-- Agenda Table Card (Date formatted dd/mm) -->
+      <div class="admin-card-box">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-list-check text-gradient-gold"></i> Agenda Autoadministrable de Citas</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-solid fa-shield-halved"></i> Prevención de empalmes activada</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Sucursal</th>
+                <th>Servicio</th>
+                <th>Fecha (DD/MM)</th>
+                <th>Horario & Duración</th>
+                <th>Trabajadora Asignada</th>
+                <th>Cambiar Estatus</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="adminAgendaTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sucursales Section (WITHOUT Phone Number) -->
+      <div class="admin-card-box">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-store text-gradient-gold"></i> Red de Sucursales (Editables en Tiempo Real)</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Indicador Abierto / Cerrado en Vivo</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2.5rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre Sucursal</th>
+                <th>Domicilio</th>
+                <th>Horario Atención</th>
+                <th>Encargada</th>
+                <th>Horario Vivo</th>
+                <th>Estatus</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="adminSucursalesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Form Directly Below Red de Sucursales (WITHOUT Phone Field) -->
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold);"><i class="fa-solid fa-plus-circle"></i> Registrar Nueva Sucursal</h4>
+        <form id="newBranchForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;">
+          <div class="form-group">
+            <label>Nombre de la Sucursal</label>
+            <input type="text" class="form-control" id="newBranchName" placeholder="Ej. Sucursal Pachuca Sur" required>
+          </div>
+
+          <div class="form-group">
+            <label>Domicilio Completo</label>
+            <input type="text" class="form-control" id="newBranchAddress" placeholder="Calle, Número, Col. Centro, Pachuca" required>
+          </div>
+
+          <div class="form-group">
+            <label>Hora Apertura</label>
+            <input type="text" class="form-control" id="newBranchOpen" value="10:00" placeholder="10:00" required>
+          </div>
+
+          <div class="form-group">
+            <label>Hora Cierre</label>
+            <input type="text" class="form-control" id="newBranchClose" value="19:00" placeholder="19:00" required>
+          </div>
+
+          <div class="form-group">
+            <label>Encargada / Gerente</label>
+            <input type="text" class="form-control" id="newBranchManager" placeholder="Nombre de encargada" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Nueva Sucursal
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Workers Management Section (WITH 7 Days Checkboxes) -->
+      <div class="admin-card-box">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-users-gear text-gradient-rose"></i> Equipo de Trabajadoras (Casillas de Días & Horarios)</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Reasignación Automática de Citas</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2.5rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre Trabajadora</th>
+                <th>Días Disponibles (Marca las casillas)</th>
+                <th>Turno de Trabajo</th>
+                <th>Estatus</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="adminWorkersTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Form Directly Below Workers Table (WITH 7 Days Checkboxes) -->
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold);"><i class="fa-solid fa-user-plus"></i> Registrar Nueva Trabajadora</h4>
+        <form id="newWorkerForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;">
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" class="form-control" id="newWorkerName" placeholder="Ej. Ana Martínez" required>
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label>Días Disponibles (Selecciona los días)</label>
+            <div class="days-checkbox-group">
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_lun"> Lun</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_mar" checked> Mar</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_mie" checked> Mié</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_jue" checked> Jue</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_vie" checked> Vie</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_sab" checked> Sáb</label>
+              <label class="day-checkbox-item"><input type="checkbox" id="newW_day_dom"> Dom</label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Hora Inicio Turno</label>
+            <input type="text" class="form-control" id="newWorkerStart" value="10:00" placeholder="10:00" required>
+          </div>
+
+          <div class="form-group">
+            <label>Hora Fin Turno</label>
+            <input type="text" class="form-control" id="newWorkerEnd" value="19:00" placeholder="19:00" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Trabajadora
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Service Configuration Box -->
+      <div class="admin-card-box">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-sliders text-gradient-gold"></i> Configuración Integral de Servicios & Mostrar/Ocultar</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Asignación de personal por servicio</span>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+          Marca qué trabajadoras están capacitadas para realizar cada servicio. El sistema evaluará su disponibilidad y reasignará automáticamente las citas. Utiliza el botón <strong>Mostrar / Ocultar</strong> para cambiar la visibilidad del servicio en el sitio cliente.
+        </p>
+
+        <div class="table-responsive" style="margin-bottom: 2.5rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Servicio</th>
+                <th>Precio ($ MXN)</th>
+                <th>Duración (Min)</th>
+                <th>Trabajadoras Asignadas</th>
+                <th>Visibilidad</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="adminServicesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Form to Add New Service -->
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold);"><i class="fa-solid fa-plus-circle"></i> Agregar Nuevo Servicio al Catálogo</h4>
+        <form id="newServiceForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem;">
+          <div class="form-group">
+            <label>Nombre del Servicio</label>
+            <input type="text" class="form-control" id="newSrvName" placeholder="Ej. Pedicura Spa VIP" required>
+          </div>
+
+          <div class="form-group">
+            <label>Categoría</label>
+            <select class="form-control" id="newSrvCategory" required>
+              <option value="unas">💅 Uñas & Gel Art</option>
+              <option value="pestanas">👁️ Pestañas & Cejas</option>
+              <option value="cabello">💇‍♀️ Cabello & Balayage</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Precio ($ MXN)</label>
+            <input type="number" class="form-control" id="newSrvPrice" placeholder="500" required>
+          </div>
+
+          <div class="form-group">
+            <label>Duración (Minutos)</label>
+            <input type="number" class="form-control" id="newSrvDuration" placeholder="60" required>
+          </div>
+
+          <div class="form-group">
+            <label>Emoji / Icono</label>
+            <input type="text" class="form-control" id="newSrvIcon" value="💅" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Nuevo Servicio
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal 1: Agendar Cita en Salón -->
+  <div class="modal-overlay" id="bookModal">
+    <div class="modal-card">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold">Agendar Cita en Salón ($ MXN)</h3>
+        <p>El sistema asigna automáticamente a una trabajadora libre especializada en tu servicio.</p>
+      </div>
+
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" class="form-control" id="clientName" placeholder="Tu nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label>Selecciona Sucursal</label>
+          <select class="form-control" id="branchSelect" required>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Servicio Deseado (Precios en $ MXN)</label>
+          <select class="form-control" id="serviceSelect" required>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Fecha de la Cita</label>
+          <input type="date" class="form-control" id="appointmentDate" required>
+        </div>
+
+        <div class="form-group">
+          <label>Horarios Disponibles:</label>
+          <div class="time-slot-picker" id="timeSlotsContainer">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+          <i class="fa-brands fa-whatsapp"></i> Confirmar Cita por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Reservar Cupo Curso Presencial -->
+  <div class="modal-overlay" id="courseModal">
+    <div class="modal-card">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold">Reserva de Cupo Presencial (Hidalgo)</h3>
+        <p>Asegura tu lugar en nuestros talleres prácticos en el Estado de Hidalgo.</p>
+      </div>
+
+      <form id="courseForm">
+        <div class="form-group">
+          <label>Nombre de la Estudiante</label>
+          <input type="text" class="form-control" id="studentName" placeholder="Tu nombre completo" required>
+        </div>
+
+        <div class="form-group">
+          <label>Curso de Interés</label>
+          <select class="form-control" id="courseSelect" required>
+            <option value="Master en Uñas Esculpidas & Polygel ($3,500 MXN)">Master en Uñas Esculpidas & Polygel ($3,500 MXN)</option>
+            <option value="Lash Artist & Brow Mastery ($2,800 MXN)">Lash Artist & Brow Mastery ($2,800 MXN)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Ubicación / Sede en Hidalgo</label>
+          <select class="form-control" id="courseLocationSelect" required>
+            <option value="Salón Principal Pachuca">Salón Principal Pachuca</option>
+            <option value="Sede Tulancingo, Hgo.">Sede Tulancingo, Hgo.</option>
+            <option value="Sede Tula de Allende, Hgo.">Sede Tula de Allende, Hgo.</option>
+            <option value="Sede Mineral del Monte, Hgo.">Sede Mineral del Monte, Hgo.</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <i class="fa-brands fa-whatsapp"></i> Apartar Lugar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Solicitar Sede en Otra Ciudad -->
+  <div class="modal-overlay" id="cityModal">
+    <div class="modal-card">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-rose">Solicitar Curso en Mi Municipio (Hidalgo)</h3>
+        <p>Llevamos la formación 100% presencial de EJEMPLO WEB a tu localidad.</p>
+      </div>
+
+      <form id="cityForm">
+        <div class="form-group">
+          <label>Tu Nombre</label>
+          <input type="text" class="form-control" id="reqName" placeholder="Nombre completo" required>
+        </div>
+
+        <div class="form-group">
+          <label>Municipio o Localidad en Hidalgo</label>
+          <input type="text" class="form-control" id="reqCity" placeholder="Ej. Tulancingo / Tula / Mineral de la Reforma / Actopan" required>
+        </div>
+
+        <div class="form-group">
+          <label>Curso que deseas</label>
+          <select class="form-control" id="reqCourseSelect" required>
+            <option value="Master en Uñas Esculpidas">Master en Uñas Esculpidas</option>
+            <option value="Lash Artist & Brow Mastery">Lash Artist & Brow Mastery</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Número de personas interesadas (Aprox)</label>
+          <select class="form-control" id="reqGroupSize" required>
+            <option value="1 a 3 personas">Solo yo / 1 a 3 amigas</option>
+            <option value="4 a 6 personas">Grupo de 4 a 6 personas</option>
+            <option value="7+ personas">Grupo grande (7+ personas)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-rose" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud de Grupo
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Widget -->
+  <div class="whatsapp-widget">
+    <div class="wa-menu" id="waMenu">
+      <a href="#" class="wa-option" onclick="openBookModal()">
+        <i class="fa-solid fa-spa"></i> Agendar Cita en Pachuca ($ MXN)
+      </a>
+      <a href="#" class="wa-option" onclick="openCourseModal()">
+        <i class="fa-solid fa-graduation-cap"></i> Información Cursos Presenciales
+      </a>
+      <a href="#" class="wa-option" onclick="openCityModal()">
+        <i class="fa-solid fa-location-dot"></i> Solicitar Curso en mi Municipio
+      </a>
+    </div>
+    <button class="wa-btn" id="waBtn" title="Contacto WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </button>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast" id="toastNotification">
+    <i class="fa-solid fa-circle-check text-gradient-gold" style="font-size: 1.4rem;"></i>
+    <span id="toastMessage">¡Acción realizada con éxito!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#" class="logo-container" style="margin-bottom: 1rem;">
+          <div class="logo-icon">E</div>
+          <div class="logo-text">
+            <span class="brand-name">EJEMPLO WEB</span>
+            <span class="brand-sub">Salón & Academia Hidalgo</span>
+          </div>
+        </a>
+        <p>Plataforma web con mapa interactivo en vivo del Estado de Hidalgo, precios en Pesos Mexicanos ($ MXN) y gestión de tiempos por trabajadoras.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Salón de Belleza</h4>
+        <ul>
+          <li>Diseño de Uñas & Gel Art</li>
+          <li>Lash Artist & Volumen Ruso</li>
+          <li>Lifting & Cejas HD</li>
+          <li>Balayage & Colorimetría</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Cursos Presenciales</h4>
+        <ul>
+          <li>Salón Principal (Pachuca de Soto)</li>
+          <li>Sedes Itinerantes en Hidalgo</li>
+          <li>Kits Profesionales Incluidos</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto & Horarios</h4>
+        <p><i class="fa-solid fa-clock"></i> Mar - Sáb: 10:00 AM - 7:00 PM</p>
+        <p><i class="fa-solid fa-location-dot"></i> Av. Revolución #450, Pachuca, Hidalgo</p>
+        <p><i class="fa-brands fa-instagram"></i> @ejemploweb_hidalgo</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EJEMPLO WEB Hidalgo. Todos los precios expresados en Pesos Mexicanos ($ MXN).</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
