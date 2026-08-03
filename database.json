@@ -1,0 +1,261 @@
+{
+  "sucursales": [
+    {
+      "id": "suc_1785290482341",
+      "name": "Sucursal Prueba",
+      "address": "Direccion Prueba",
+      "coords": "20.268448, -98.950772",
+      "openTime": "10:00",
+      "closeTime": "19:00",
+      "manager": "General",
+      "status": "operativa",
+      "lat": 20.268448,
+      "lng": -98.950772
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_prueba_categoria_3522",
+      "name": "prueba categoria"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w_1785290718227",
+      "name": "Especialista prueba",
+      "sucursalId": "suc_1785290482341",
+      "days": [
+        "lun",
+        "mar",
+        "mie",
+        "jue",
+        "vie",
+        "sab",
+        "dom"
+      ],
+      "startTime": "10:00",
+      "endTime": "19:00",
+      "status": "activa"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv_1785290895379",
+      "name": "Nombre de servicio prueba mod",
+      "category": "cat_prueba_categoria_3522",
+      "price": 1500,
+      "duration": 65,
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba descripcion de prueba",
+      "image": "images/1785290895_IMG_20260708_182822078_DOC.jpg"
+    },
+    {
+      "id": "srv_1785292318884",
+      "name": "Nombre de servicio prueba 2",
+      "category": "cat_prueba_categoria_3522",
+      "price": 4331,
+      "duration": 30,
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html http://localhost:8000/general.html",
+      "image": "images/1785292318_IM.png"
+    }
+  ],
+  "courses": [
+    {
+      "id": "c_1785291551054",
+      "title": "titulo de prueba",
+      "desc": "Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza Servicios en Salón de Belleza",
+      "modality": "100% Presencial en Salón",
+      "price": 1500,
+      "includesMaterial": true,
+      "duration": "2 dias",
+      "certificate": "certificado de prueba",
+      "location": "sede de prueba",
+      "coords": "20.269170, -98.949750",
+      "dateTime": "12 y 15 de 09:00 a 15:00 hrs",
+      "image": "images/1785291551_ChatGPT_Image_23_may_2026__07_01_59_p.m..png",
+      "visible": true,
+      "lat": 20.26917,
+      "lng": -98.94975
+    },
+    {
+      "id": "c_1785292050082",
+      "title": "titulo de prueba 2",
+      "desc": "uardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambiosuardar Cambios",
+      "modality": "100% Presencial en Salón",
+      "price": 15000,
+      "includesMaterial": false,
+      "duration": "2 dias",
+      "certificate": "certificado de prueba",
+      "location": "sede de prueba 2",
+      "coords": "20.269170, -98.949750",
+      "dateTime": "12 y 15 de 09:00 a 15:00 hrs",
+      "image": "images/course_nails.jpg",
+      "visible": true,
+      "lat": 20.26917,
+      "lng": -98.94975
+    },
+    {
+      "id": "c_1785292559418",
+      "title": "Master en Uñas Esculpidas & Polygel",
+      "desc": "Curso presencial aperturado oficialmente tras alcanzar el 63% de quórum en Mineral del Monte.",
+      "modality": "100% Presencial en Salón",
+      "price": 3500,
+      "includesMaterial": true,
+      "duration": "2 Días (16 Horas)",
+      "certificate": "Validez Curricular",
+      "location": "Mineral del Monte, Hgo.",
+      "coords": "",
+      "dateTime": "Fecha por confirmar - Próximo mes",
+      "image": "images/course_nails.jpg",
+      "visible": true
+    }
+  ],
+  "requestedGroups": [
+    {
+      "id": "rg3",
+      "municipality": "Mineral del Monte",
+      "courseTitle": "Master en Uñas Esculpidas & Polygel",
+      "registeredStudents": 5,
+      "maxStudents": 8,
+      "studentNames": [
+        "Lorena Castillo",
+        "Yolanda M.",
+        "Carmen S.",
+        "Diana F.",
+        "Ximena V."
+      ],
+      "status": "publicado"
+    },
+    {
+      "id": "rg4",
+      "municipality": "Actopan",
+      "courseTitle": "Lash Artist & Brow Mastery",
+      "registeredStudents": 4,
+      "maxStudents": 8,
+      "studentNames": [
+        "Silvia R.",
+        "Teresa G.",
+        "Lourdes B.",
+        "Veronica M."
+      ],
+      "status": "activo"
+    },
+    {
+      "id": "rg5",
+      "municipality": "Ixmiquilpan",
+      "courseTitle": "Diseño de Color & Balayage",
+      "registeredStudents": 3,
+      "maxStudents": 8,
+      "studentNames": [
+        "Noemí H.",
+        "Elizabeth C.",
+        "Guadalupe S."
+      ],
+      "status": "activo"
+    },
+    {
+      "id": "rg_1785292377698",
+      "municipality": "Municio Ejemplo",
+      "courseTitle": "titulo de prueba ($1,500 MXN)",
+      "registeredStudents": 1,
+      "maxStudents": 8,
+      "studentNames": [
+        "solicitud nombre ejemplo"
+      ],
+      "status": "activo"
+    }
+  ],
+  "courseReservations": [
+    {
+      "id": "cr_1785292377698",
+      "studentName": "solicitud nombre ejemplo",
+      "courseTitle": "titulo de prueba ($1,500 MXN)",
+      "municipality": "Municio Ejemplo",
+      "price": 1500,
+      "date": "2026-07-29",
+      "status": "confirmada"
+    }
+  ],
+  "benefitsClients": [
+    {
+      "id": "bc_1785290341740",
+      "clientNumber": "253546",
+      "name": "Prueba",
+      "phone": "7893762783",
+      "city": "N/A",
+      "level": "🆕 Cliente Nuevo",
+      "benefits": []
+    }
+  ],
+  "bookings": [],
+  "testimonials": [
+    {
+      "id": "t_1785292460660",
+      "author": "ejemplo nombre testimonio",
+      "role": "Cliente Salón",
+      "rating": 4,
+      "title": "Ejemplo de titulo",
+      "comment": "Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo Quórum de Grupos Solicitados en Hidalgo",
+      "date": "2026-07-29",
+      "status": "aprobado"
+    },
+    {
+      "id": "t_1785292968042",
+      "author": "ejemplo nombre 2",
+      "role": "Cliente Salón",
+      "rating": 5,
+      "title": "Ejemplo de titulo2",
+      "comment": "pruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebapruebaprueba",
+      "date": "2026-07-29",
+      "status": "aprobado"
+    }
+  ],
+  "adminUsers": [
+    {
+      "id": "u_frank_superadmin",
+      "username": "Frank",
+      "passwordHash": "6c6132124d3851706d5cdb486b750ab97899f26d45698754b3fa866436331f0e",
+      "name": "Frank (Administrador Principal)",
+      "role": "superadmin",
+      "permissions": {
+        "revenue": true,
+        "agenda": true,
+        "categories": true,
+        "services": true,
+        "courses": true,
+        "sucursales": true,
+        "workers": true,
+        "requestedGroups": true,
+        "benefits": true,
+        "testimonials": true,
+        "userManagement": true
+      }
+    },
+    {
+      "id": "u_1785292679417",
+      "username": "prueba",
+      "passwordHash": "c9232b8812e22fff8a0d27324becd4e955ac6b64c6af50b6faca84a1bc85cbe7",
+      "name": "Ejemplo nombre de trabajadora",
+      "role": "worker",
+      "permissions": {
+        "revenue": false,
+        "agenda": true,
+        "categories": false,
+        "services": true,
+        "courses": false,
+        "sucursales": false,
+        "workers": false,
+        "requestedGroups": false,
+        "benefits": false,
+        "testimonials": false
+      }
+    }
+  ]
+}
