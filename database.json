@@ -1,0 +1,910 @@
+{
+  "sucursales": [
+    {
+      "id": "suc_1785290482341",
+      "name": "Total Beauty Tepatepec",
+      "address": "1o de Mayo 2, III Demarcación, 42660 Tepatepec, Hgo.",
+      "coords": "20.245587874549987, -99.08899571226857",
+      "openTime": "10:00",
+      "closeTime": "19:00",
+      "manager": "General",
+      "status": "operativa",
+      "lat": 20.245587874549987,
+      "lng": -99.08899571226857
+    }
+  ],
+  "categories": [
+    {
+      "id": "pestanas",
+      "name": "PESTAÑAS"
+    },
+    {
+      "id": "cejas",
+      "name": "CEJAS"
+    },
+    {
+      "id": "depilacion",
+      "name": "DEPILACIÓN"
+    },
+    {
+      "id": "cat_gelish_4275",
+      "name": "GELISH"
+    },
+    {
+      "id": "cat_acrilicas_8311",
+      "name": "ACRÍLICAS"
+    },
+    {
+      "id": "cat_manicure_2894",
+      "name": "MANICURE"
+    },
+    {
+      "id": "cat_pedicure_6515",
+      "name": "PEDICURE"
+    },
+    {
+      "id": "cat_alaciados____tratamientos_capilares_6429",
+      "name": "ALACIADOS & TRATAMIENTOS CAPILARES"
+    },
+    {
+      "id": "cat_cortes_de_cabello_9460",
+      "name": "CORTES DE CABELLO"
+    },
+    {
+      "id": "cat_colorimetria_2782",
+      "name": "COLORIMETRIA"
+    },
+    {
+      "id": "cat_cortina_y_contornos_7097",
+      "name": "CORTINA Y CONTORNOS"
+    },
+    {
+      "id": "cat_mechas_de_frente_6583",
+      "name": "MECHAS DE FRENTE"
+    },
+    {
+      "id": "cat_tintes_5015",
+      "name": "TINTES"
+    },
+    {
+      "id": "cat_rayitos_0268",
+      "name": "RAYITOS"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w_1785290718227",
+      "name": "Especialista prueba",
+      "sucursalId": "suc_1785290482341",
+      "days": [
+        "lun",
+        "mar",
+        "mie",
+        "jue",
+        "vie",
+        "sab",
+        "dom"
+      ],
+      "startTime": "10:00",
+      "endTime": "19:00",
+      "status": "activa"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv_cat_lifting_pestanas",
+      "name": "Lifting de Pestañas",
+      "category": "pestanas",
+      "price": 300,
+      "duration": 60,
+      "badge": "✨ Favorito",
+      "assignedWorkerIds": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento estético que eleva, curva y acentúa la forma natural de tus pestañas desde la raíz, logrando una mirada más abierta, definida y con efecto rímel de larga duración sin necesidad de extensiones.",
+      "image": "images/1786228261_lifting_de_pesta_as.png"
+    },
+    {
+      "id": "srv_cat_pestanas_clasica",
+      "name": "Extensiones de Pestañas  (Técnica Clásica)",
+      "category": "pestanas",
+      "price": 499,
+      "duration": 90,
+      "badge": "🌟 Elegante",
+      "assignedWorkerIds": [
+        "w_1785290718227",
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ],
+      "visible": true,
+      "desc": "Aplicación de una extensión individual sobre cada una de tus pestañas naturales para lograr un efecto elegante, natural y con mayor longitud y definición en tu mirada.",
+      "image": "images/1786228362_Gemini_Generated_Image_le5ku1le5ku1le5k.png"
+    },
+    {
+      "id": "srv_cat_pestanas_volumen",
+      "name": "Extensiones de Pestañas Volumen Tecnológico",
+      "category": "pestanas",
+      "price": 550,
+      "duration": 105,
+      "badge": "👑 Tendencia",
+      "assignedWorkerIds": [
+        "w_1785290718227",
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ],
+      "visible": true,
+      "desc": "Aplicación de abanicos predefinidos de fibras ultra ligeras que aportan máximo volumen, densidad y definición a tu mirada en menos tiempo, con un acabado uniforme y duradero.",
+      "image": "images/1786228728_3.png"
+    },
+    {
+      "id": "srv_cat_pestanas_efectos",
+      "name": "Extensiones de Pestañas Efectos en Tendencia",
+      "category": "pestanas",
+      "price": 700,
+      "duration": 120,
+      "badge": "🔥 Top Trend",
+      "assignedWorkerIds": [
+        "w_1785290718227",
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ],
+      "visible": true,
+      "desc": "Diseños que combinan diferentes longitudes y curvaturas para crear miradas únicas, con estilo vanguardista y un acabado moderno de gran impacto.",
+      "image": "images/1786228832_4.png"
+    },
+    {
+      "id": "srv_1786199088366",
+      "name": "Extensiones de Pestañas Efecto Rimel / Mojado",
+      "category": "pestanas",
+      "price": 550,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica que combina fibras cerradas para simular el aspecto de pestañas recién maquilladas con rímel o ligeramente húmedas, logrando una mirada con volumen texturizado, definida y de estilo fresco.",
+      "image": "images/1786228956_5.png"
+    },
+    {
+      "id": "srv_1786199162474",
+      "name": "Laminado + Diseño + Depilación de Cejas",
+      "category": "cejas",
+      "price": 300,
+      "duration": 60,
+      "badge": "👑 Tendencia",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio integral que fija y peina los pelos rebeldes, define la forma ideal de tus cejas según la morfología de tu rostro y elimina el exceso de vello para lograr una mirada enmarcada, simétrica y pulida.",
+      "image": "images/1786229583_6.png"
+    },
+    {
+      "id": "srv_1786199214904",
+      "name": "Ceja HD (Laminado + Diseño + Depilación + Pigmento)",
+      "category": "cejas",
+      "price": 400,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento de definición avanzada que alinea, da forma y depila tus cejas, añadiendo un pigmento especial para rellenar huecos, aportar color y lograr un efecto de cejas tupidas, simétricas y de alto impacto.",
+      "image": "images/1786229917_7.png"
+    },
+    {
+      "id": "srv_1786199245142",
+      "name": "Laminado (Solo)",
+      "category": "cejas",
+      "price": 200,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento de fijación que peina y alinea los pelos rebeldes de las cejas hacia la dirección deseada, logrando un aspecto más grueso, ordenado y con mayor volumen natural.",
+      "image": "images/1786231514_8.png"
+    },
+    {
+      "id": "srv_1786199270406",
+      "name": "Diseño y Depilación de Cejas",
+      "category": "cejas",
+      "price": 150,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Estudio visajista para definir la forma ideal de tus cejas según tus facciones, seguido de una depilación precisa que remueve el vello no deseado para enmarcar tu mirada con limpieza y simetría.",
+      "image": "images/1786232203_9.png"
+    },
+    {
+      "id": "srv_1786199416933",
+      "name": "Depilación de Cara con Hilo",
+      "category": "depilacion",
+      "price": 250,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica natural y precisa que remueve el vello de raíz utilizando un hilo de algodón, ideal para pieles sensibles ya que no irrita, exfolia suavemente y deja el rostro completamente liso y definido.",
+      "image": "images/1786232656_10.png"
+    },
+    {
+      "id": "srv_1786199435085",
+      "name": "Depilación de Cara con Cera",
+      "category": "depilacion",
+      "price": 200,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica rápida y efectiva que retira el vello facial desde la raíz, dejando la piel del rostro suave, libre de imperfecciones y con un acabado uniforme por semanas.",
+      "image": "images/1786289292_1.png"
+    },
+    {
+      "id": "srv_1786199454376",
+      "name": "Depilación de Cara con Perfilador",
+      "category": "depilacion",
+      "price": 200,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica suave e indolora que remueve el vello fino y las células muertas de la piel con una cuchilla de precisión, dejando el rostro instantáneamente suave, luminoso y listo para una mejor absorción de productos o un maquillaje impecable.",
+      "image": "images/1786289383_2.png"
+    },
+    {
+      "id": "srv_1786199560441",
+      "name": "Gelish Gel Semipermanente Un Solo Tono",
+      "category": "cat_gelish_4275",
+      "price": 199,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de esmalte en gel de alta durabilidad en un color uniforme, curado con luz LED/UV para garantizar un brillo impecable, secado instantáneo y uñas perfectas sin descascararse por semanas.",
+      "image": "images/1786289901_3.png"
+    },
+    {
+      "id": "srv_1786199589046",
+      "name": "Gelish Gel Semipermanente 2 tonos",
+      "category": "pestanas",
+      "price": 199,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de esmalte en gel de alta durabilidad combinando dos tonos a tu elección, curado con luz LED/UV para un acabado con brillo impecable, diseño personalizado y larga duración sin descascararse.",
+      "image": "images/1786290284_4.png"
+    },
+    {
+      "id": "srv_1786199610139",
+      "name": "GELISH GEL SEMIPERMANENTE DE 3 TONOS O MAS",
+      "category": "cat_gelish_4275",
+      "price": 199,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de esmalte en gel de alta durabilidad con una combinación de tres o más tonos a tu elección, logrando un estilo dinámico, colorido y completamente personalizado con un brillo impecable y de larga duración.",
+      "image": "images/1786297105_5.png"
+    },
+    {
+      "id": "srv_1786199637960",
+      "name": "GELISH GEL RUBBER",
+      "category": "cat_gelish_4275",
+      "price": 350,
+      "duration": 60,
+      "badge": "👑 Tendencia",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Base de gel de alta densidad y flexibilidad que refuerza la uña natural, corrige imperfecciones de la superficie y aporta nivelación, ideal para uñas quebradizas o débiles que buscan mayor resistencia y larga duración.",
+      "image": "images/1786297568_6.png"
+    },
+    {
+      "id": "srv_1786199675265",
+      "name": "GELISH RETIRO DE GEL SEMIPERMANENTE",
+      "category": "cat_gelish_4275",
+      "price": 50,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Remoción segura y cuidadosa del esmalte en gel mediante productos y herramientas especializadas, diseñada para retirar el producto por completo sin dañar la capa natural de tus uñas.",
+      "image": "images/1786298109_7.png"
+    },
+    {
+      "id": "srv_1786199724908",
+      "name": "RETOQUE DE UÑAS ACRILICAS",
+      "category": "cat_acrilicas_8311",
+      "price": 300,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Mantenimiento profesional para rellenar el crecimiento natural de la uña, reestructurar la arquitectura de la acrílica y renovar el color o diseño, devolviéndoles un aspecto impecable, fuerte y recien hecho.",
+      "image": "images/1786298383_8.png"
+    },
+    {
+      "id": "srv_1786199856028",
+      "name": "UÑAS PEQUEÑAS LARGO 1-2 (TIP)",
+      "category": "cat_acrilicas_8311",
+      "price": 350,
+      "duration": 70,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Extensión de uñas con tip en un largo corto y cómodo (números 1 al 2), perfecta para un estilo práctico, natural y resistente sin perder la elegancia en tus manos.",
+      "image": "images/1786299572_9.png"
+    },
+    {
+      "id": "srv_1786199918552",
+      "name": "UÑAS PEQUEÑAS LARGO 1-2 (ACRÍLICO)",
+      "category": "cat_acrilicas_8311",
+      "price": 380,
+      "duration": 1,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de acrílico en un largo corto y muy práctico (números 1 al 2), ideal para dar fuerza, forma y durabilidad a la uña natural con un aspecto sumamente natural y cómodo para el día a día.",
+      "image": "images/1786299794_10.png"
+    },
+    {
+      "id": "srv_1786199946171",
+      "name": "UÑAS MEDIANAS LARGO 3-4 (TIP)",
+      "category": "cat_acrilicas_8311",
+      "price": 350,
+      "duration": 79,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Extensión de uñas con tip en un largo mediano (números 3 al 4), equilibrando estilismo, presencia y comodidad para lucir manos elegantes y estilizadas.",
+      "image": "images/1786299986_11.png"
+    },
+    {
+      "id": "srv_1786199985679",
+      "name": "UÑAS MEDIANAS LARGO 3-4 (ACRILICOS)",
+      "category": "cat_acrilicas_8311",
+      "price": 399,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de acrílico en un largo mediano versátil (números 3 al 4), ideal para brindar mayor resistencia, estructura y un acabado estilizado y elegante que resalta tus manos sin perder comodidad.",
+      "image": "images/1786300267_12.png"
+    },
+    {
+      "id": "srv_1786200016708",
+      "name": "UÑAS GRANDES LARGO 5-6 (TIP)",
+      "category": "cat_acrilicas_8311",
+      "price": 399,
+      "duration": 90,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Extensión de uñas con tip en un largo impactante (números 5 al 6), ideal para quienes buscan una manicura llamativa, elegante y con espacio perfecto para lucir diseños de alto impacto.",
+      "image": "images/1786300495_13.png"
+    },
+    {
+      "id": "srv_1786200044953",
+      "name": "UÑAS GRANDES LARGO 5-6 (ACRILICO)",
+      "category": "cat_acrilicas_8311",
+      "price": 450,
+      "duration": 70,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de acrílico en un largo llamativo e impactante (números 5 al 6), que brinda máxima firmeza, resistencia y una estructura estilizada, perfecta para lucir manos espectaculares y con gran presencia.",
+      "image": "images/1786300722_14.png"
+    },
+    {
+      "id": "srv_1786200073689",
+      "name": "UÑAS XL LARGO 7-15  (TIP)",
+      "category": "cat_acrilicas_8311",
+      "price": 550,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Extensión de uñas con tip en largo extra grande (números 7 al 15), diseñada para lograr un estilo audaz, vanguardista e imponente, ideal para lucir manos estilizadas y diseños creativos de máximo impacto.",
+      "image": "images/1786301115_15.png"
+    },
+    {
+      "id": "srv_1786200107294",
+      "name": "UÑAS XL LARGO 7-15  (ACRILICO)",
+      "category": "cat_acrilicas_8311",
+      "price": 599,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Aplicación de acrílico esculpido en un largo extra grande (números 7 al 15), que ofrece máxima resistencia, firmeza y una arquitectura impecable para garantizar la durabilidad de un estilo imponente, audaz y de alto impacto.",
+      "image": "images/1786301226_16.png"
+    },
+    {
+      "id": "srv_1786200141039",
+      "name": "MANICURE",
+      "category": "cat_manicure_2894",
+      "price": 150,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento completo que limpia, da forma y lima tus uñas naturales, retira e hidrata la cutícula y suaviza la piel de las manos con un ligero masaje, dejándolas impecables, sanas y cuidadas.",
+      "image": "images/1786301500_17.png"
+    },
+    {
+      "id": "srv_1786200176857",
+      "name": "PEDICURE SPA",
+      "category": "cat_pedicure_6515",
+      "price": 250,
+      "duration": 97,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento integral de descanso y renovación para tus pies que incluye limpieza profunda, limado de uñas, cuidado de cutículas, exfoliación suave, remoción de asperezas, mascarilla hidratante y un masaje relajante que devuelve la frescura y suavidad a tu piel.",
+      "image": "images/1786301788_18.png"
+    },
+    {
+      "id": "srv_1786200235808",
+      "name": "PEDICURE GELISH 1, 2 O 3 TONOS",
+      "category": "cat_pedicure_6515",
+      "price": 199,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Tratamiento completo de pedicure que combina la limpieza y el cuidado de tus pies con la aplicación de esmalte en gel de alta durabilidad, permitiéndote elegir entre 1, 2 o hasta 3 tonos para lucir un acabado impecable, brillante y resistente.",
+      "image": "images/1786302587_19.png"
+    },
+    {
+      "id": "srv_1786200257156",
+      "name": "PEDICURE ACRIPIE",
+      "category": "cat_pedicure_6515",
+      "price": 299,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio integral de pedicure combinado con la aplicación o reconstrucción de uñas de pies en acrílico, ideal para unificar la forma, dar fuerza, corregir imperfecciones y lucir un acabado perfecto, resistente y de larga duración.",
+      "image": "images/1786303274_20.png"
+    },
+    {
+      "id": "srv_1786200280110",
+      "name": "PEDICURE RETOQUE DE ACRIPIE",
+      "category": "cat_pedicure_6515",
+      "price": 250,
+      "duration": 88,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Mantenimiento profesional que reescultura el crecimiento de las uñas de los pies en acrílico, rellena el espacio natural y renueva la forma y el color, devolviéndoles un aspecto impecable, uniforme y resistente.",
+      "image": "images/1786303129_21.png"
+    },
+    {
+      "id": "srv_1786200367513",
+      "name": "ALACIADOS Y TRATAMIENTOS CAPILARES DEL HOMBRO HACIA ARRIBA",
+      "category": "cat_alaciados____tratamientos_capilares_6429",
+      "price": 999,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio especializado de alisado o restauración profunda diseñado exclusivamente para melenas cuyo largo máximo de cabello llega hasta la altura de los hombros o por encima de ellos (cabello corto o arriba del hombro). Este proceso ayuda a reducir el frizz, aporta brillo extremo e hidratación intensiva, dejando el cabello suave, manejable y saludable.",
+      "image": "images/1786303715_22.png"
+    },
+    {
+      "id": "srv_1786200398169",
+      "name": "ALACIADOS Y TRATAMIENTOS CAPILARES DEL HOMBRO HACIA ABAJO DE LA AXILA",
+      "category": "cat_alaciados____tratamientos_capilares_6429",
+      "price": 1200,
+      "duration": 88,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio especializado de alisado o restauración profunda diseñado para melenas cuya longitud de cabello abarca desde debajo de los hombros hasta la altura de la axila (largo mediano). Ayuda a controlar el volumen, eliminar el frizz, aportar brillo intenso e hidratar a profundidad para lograr un cabello suave, sedoso y fácil de peinar.",
+      "image": "images/1786304006_23.png"
+    },
+    {
+      "id": "srv_1786200431817",
+      "name": "ALACIADOS Y TRATAMIENTOS CAPILARES DE INICIO DE LA AXILA A MEDIA ESPALDA",
+      "category": "cat_alaciados____tratamientos_capilares_6429",
+      "price": 1500,
+      "duration": 60,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio especializado de alisado o restauración profunda diseñado para melenas cuyo largo de cabello comienza desde la altura de la axila y llega hasta la media espalda. Ayuda a controlar el volumen, eliminar el frizz de raíz a puntas, aportar un brillo espectacular e hidratar a profundidad para mantener el cabello suave, sedoso y radiante.",
+      "image": "images/1786304440_24.png"
+    },
+    {
+      "id": "srv_1786200567430",
+      "name": "ALACIADOS Y TRATAMIENTOS CAPILARES DE MEDIA ESPALDA A INICIO DE LA LUMBAR",
+      "category": "cat_alaciados____tratamientos_capilares_6429",
+      "price": 1800,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio especializado de alisado o restauración profunda diseñado para melenas de gran longitud, cuyo largo de cabello abarca desde la media espalda hasta el inicio de la zona lumbar. Ayuda a controlar el volumen, eliminar el frizz por completo, aportar brillo espejo e hidratar intensamente cada fibra capilar para mantener un cabello suave, sedoso y con caída impecable.",
+      "image": "images/1786305157_26.png"
+    },
+    {
+      "id": "srv_1786200594924",
+      "name": "ALACIADOS Y TRATAMIENTOS CAPILARES DE INICIO DE LA LUMBAR A LA CADERA",
+      "category": "cat_alaciados____tratamientos_capilares_6429",
+      "price": 2500,
+      "duration": 99,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio especializado de alisado o restauración profunda diseñado para melenas muy largas, cuyo cabello abarca desde el inicio de la zona lumbar hasta la altura de la cadera. Ayuda a controlar el volumen, eliminar el frizz en toda la extensión, aportar un brillo espejo excepcional e hidratar intensamente cada hebra para lograr una cabellera suave, sedosa y con un movimiento impecable.",
+      "image": "images/1786305041_25.png"
+    },
+    {
+      "id": "srv_1786200637668",
+      "name": "CORTE DE CABELLO BORDADO",
+      "category": "cat_cortes_de_cabello_9460",
+      "price": 250,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica especializada de corte que elimina puntas abiertas, dañadas y orzadas a lo largo de toda la melena sin sacrificar ni un solo centímetro de tu largo total, devolviendo la suavidad, el brillo y una apariencia completamente sana y renovada a tu cabello.",
+      "image": "images/1786305654_27.png"
+    },
+    {
+      "id": "srv_1786200652386",
+      "name": "CORTE DE CABELLO TRADICIONAL",
+      "category": "cat_cortes_de_cabello_9460",
+      "price": 199,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio clásico de corte de cabello diseñado para dar forma, renovar las puntas, ajustar el estilo y mantener la salud de tu melena, adaptándose perfectamente a la longitud y diseño que prefieras.",
+      "image": "images/1786305821_28.png"
+    },
+    {
+      "id": "srv_1786200674537",
+      "name": "DESPUNTE DE CABELLO DE HASTA 3CM",
+      "category": "cat_cortes_de_cabello_9460",
+      "price": 150,
+      "duration": 7,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Corte ligero de mantenimiento diseñado para recortar un máximo de 3 centímetros de las puntas, ideal para eliminar el cabello seco o maltratado, refrescar la forma de tu melena y conservar la salud y vitalidad de tu cabello sin modificar su largo principal.",
+      "image": "images/1786306347_29.png"
+    },
+    {
+      "id": "srv_1786200971740",
+      "name": "MECHAS Y BALAYAGE DEL HOMBRO HACIA ARRIBA",
+      "category": "cat_colorimetria_2782",
+      "price": 1800,
+      "duration": 98,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica de coloración y diseño de luz aplicada en melenas cuyo largo máximo llega hasta la altura de los hombros o por encima de ellos. El proceso se realiza dejando un espacio de crecimiento natural (abajo de la raíz), ideal para lograr un difuminado sutil, un efecto tridimensional luminoso y un mantenimiento más cómodo y natural.",
+      "image": "images/1786306585_30.png"
+    },
+    {
+      "id": "srv_1786201020509",
+      "name": "MECHAS Y BALAYAGE DEL HOMBRO HACIA ABAJO DE LA AXILA",
+      "category": "cat_colorimetria_2782",
+      "price": 1099,
+      "duration": 58,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica de coloración y diseño de luz adaptada para melenas de largo mediano (desde los hombros hasta la altura de la axila). El trabajo de aclarado se aplica respetando el crecimiento natural (abajo de la raíz), logrando un degradado armónico, un efecto tridimensional radiante y un bajo mantenimiento que realza la textura y el movimiento del cabello.",
+      "image": "images/1786306773_31.png"
+    },
+    {
+      "id": "srv_1786201050018",
+      "name": "MECHAS Y BALAYAGE DE INICIO DE LA AXILA A MEDIA ESPALDA",
+      "category": "cat_colorimetria_2782",
+      "price": 2500,
+      "duration": 98,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica avanzada de coloración y diseño de luz diseñada para melenas largas (desde la altura de la axila hasta la media espalda). El proceso se aplica dejando un espacio de crecimiento natural (abajo de la raíz), logrando una transición de color suave y sofisticada, un efecto tridimensional luminoso y un mantenimiento práctico que realza la amplitud y el movimiento de tu cabello.",
+      "image": "images/1786307262_32.png"
+    },
+    {
+      "id": "srv_1786201085281",
+      "name": "MECHAS Y BALAYAGE DE  MEDIA ESPALDA A INICIO DE LA LUMBAR",
+      "category": "cat_colorimetria_2782",
+      "price": 2900,
+      "duration": 97,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica de coloración y diseño de luz premium diseñada para melenas de gran extensión, abarcando desde la media espalda hasta el inicio de la zona lumbar. Aplicamos el color dejando un espacio de crecimiento natural (abajo de la raíz) para lograr un difuminado impecable, un efecto de luz multidimensional y una transición de color sofisticada que realza la elegancia y el movimiento de tu cabello a lo largo de toda su longitud.",
+      "image": "images/1786307814_33.png"
+    },
+    {
+      "id": "srv_1786201115814",
+      "name": "MECHAS Y BALAYAGE DE NICIO DE LA LUMBAR A LA CADERA",
+      "category": "cat_colorimetria_2782",
+      "price": 3500,
+      "duration": 78,
+      "badge": "🔥 Top Trend",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica de coloración y diseño de luz de alta especialidad para melenas extremadamente largas (desde el inicio de la zona lumbar hasta la cadera). Trabajamos el color respetando el crecimiento natural (abajo de la raíz) para conseguir un difuminado artístico impecable y un efecto de luz multidimensional que recorre toda la melena, otorgando un brillo espectacular, profundidad y un movimiento elegante a un cabello de longitud impactante.",
+      "image": "images/1786308248_34.png"
+    },
+    {
+      "id": "srv_1786201358313",
+      "name": "CORTINA Y CONTORNOS DEL HOMBRO HACIA ARRIBA",
+      "category": "cat_cortina_y_contornos_7097",
+      "price": 1300,
+      "duration": 23,
+      "badge": "👑 Tendencia",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración y diseño enfocado en la zona frontal y superior (contornos y cortina) diseñado para melenas con cabello delgado cuyo largo máximo llega hasta la altura de los hombros o por encima de ellos. Aporta luminosidad, dimensión y un enmarcado perfecto al rostro, cuidando y protegiendo la estructura fina de tu cabello con productos especializados.",
+      "image": "images/1786310725_35.png"
+    },
+    {
+      "id": "srv_1786201387259",
+      "name": "CORTINA Y CONTORNOS DEL HOMBRO HACIA ABAJO DE LA AXILA",
+      "category": "cat_cortina_y_contornos_7097",
+      "price": 1500,
+      "duration": 65,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración y diseño enfocado en los contornos del rostro y la sección superior (cortina) para melenas de largo mediano (desde los hombros hasta la altura de la axila) con cabello de hebra delgada. Aporta luminosidad estratégica y dimensión para enmarcar el rostro de forma elegante, utilizando productos especiales que cuidan, protegen y fortalecen la estructura fina de tu cabello durante el proceso.",
+      "image": "images/1786311220_36.png"
+    },
+    {
+      "id": "srv_1786201413513",
+      "name": "CORTINA Y CONTORNOS DE INICIO DE LA AXILA A MEDIA ESPALDA",
+      "category": "cat_cortina_y_contornos_7097",
+      "price": 1800,
+      "duration": 80,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración y diseño focalizado (cortina y contornos) especializado para melenas largas, con una longitud que va desde la altura de la axila hasta la media espalda, en cabello de hebra delgada. Aporta luminosidad estratégica y dimensión para enmarcar el rostro y la parte superior, utilizando técnicas y productos cuidadosos que protegen, fortalecen y evitan el maltrato en cabellos finos.",
+      "image": "images/1786312397_37.png"
+    },
+    {
+      "id": "srv_1786201438351",
+      "name": "CORTINA Y CONTORNOS DE INICIO DE LA LUMBAR A LA CADERA",
+      "category": "cat_cortina_y_contornos_7097",
+      "price": 1999,
+      "duration": 48,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración y diseño focalizado en los contornos del rostro y la sección superior (cortina) para melenas extremadamente largas, con una longitud que abarca desde el inicio de la zona lumbar hasta la cadera, en cabello de hebra delgada. Aporta luminosidad estratégica y dimensión para realzar el rostro de forma sofisticada, utilizando técnicas de alta precisión y productos protectores avanzados que cuidan, fortalecen y preservan la integridad de las estructuras finas en longitudes extremas.",
+      "image": "images/1786312779_38.png"
+    },
+    {
+      "id": "srv_1786201515937",
+      "name": "MECHAS DE FRENTE DEL HOMBRO HACIA ARRIBA",
+      "category": "cat_mechas_de_frente_6583",
+      "price": 500,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de iluminación frontal diseñado específicamente para melenas cuyo largo máximo llega hasta la altura de los hombros o por encima de ellos. Aporta puntos de luz estratégicos alrededor del rostro para enmarcarlo, realzar tus facciones y darle un brillo fresco y renovado a tu imagen de manera sutil y elegante.",
+      "image": "images/1786313230_39.png"
+    },
+    {
+      "id": "srv_1786201539359",
+      "name": "MECHAS DE FRENTE DEL HOMBRO HACIA ABAJO DE LA AXILA",
+      "category": "cat_mechas_de_frente_6583",
+      "price": 700,
+      "duration": 89,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de iluminación frontal diseñado para melenas de largo mediano, con una longitud que va desde los hombros hasta la altura de la axila. Aporta puntos de luz estratégicos alrededor del rostro para enmarcarlo con naturalidad, realzar tus facciones y brindar un brillo fresco, dinámico y elegante a todo el contorno.",
+      "image": "images/1786318013_40.png"
+    },
+    {
+      "id": "srv_1786201567547",
+      "name": "MECHAS DE FRENTE  INICIO DE LA AXILA A MEDIA ESPALDA",
+      "category": "cat_mechas_de_frente_6583",
+      "price": 900,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de iluminación frontal diseñado para melenas largas, con una longitud que va desde la altura de la axila hasta la media espalda. Aporta puntos de luz estratégicos y luminosos alrededor del rostro para enmarcarlo con sofisticación, realzar tus facciones y crear un contraste elegante y natural que armoniza perfectamente con todo el largo de tu cabello.",
+      "image": "images/1786318397_41.png"
+    },
+    {
+      "id": "srv_1786201594003",
+      "name": "MECHAS DE FRENTE  INICIO DE LA LUMBAR A LA CADERA",
+      "category": "cat_mechas_de_frente_6583",
+      "price": 1200,
+      "duration": 32,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de iluminación frontal diseñado para melenas extremadamente largas, con una longitud que abarca desde el inicio de la zona lumbar hasta la cadera. Aporta puntos de luz estratégicos y luminosos alrededor del rostro para enmarcarlo con gran sofisticación, realzar tus facciones y crear un contraste elegante que complementa y armoniza perfectamente con la impresionante caída y magnitud de tu cabello.",
+      "image": "images/1786318673_42.png"
+    },
+    {
+      "id": "srv_1786209185468",
+      "name": "APLICACION DE TINTE",
+      "category": "cat_tintes_5015",
+      "price": 799,
+      "duration": 78,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración global que consiste en la aplicación uniforme de tinte en todo el cabello para renovar el tono, cubrir canas por completo, intensificar el color actual o lograr un cambio de imagen radiante, utilizando productos profesionales que cuidan, nutren y aportan un brillo excepcional a tu melena.",
+      "image": "images/1786319212_43.png"
+    },
+    {
+      "id": "srv_1786209205988",
+      "name": "RECUBRIMIENTO DE CANAS",
+      "category": "cat_tintes_5015",
+      "price": 1200,
+      "duration": 87,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Servicio de coloración especializado enfocado en la cobertura total y uniforme de las canas, utilizando fórmulas profesionales de alta pigmentación que garantizan un resultado duradero, de aspecto natural y con un brillo excepcional, cuidando y respetando la salud de tu fibra capilar.",
+      "image": "images/1786320888_44.png"
+    },
+    {
+      "id": "srv_1786209256242",
+      "name": "RAYITOS CON GORRO CABELLO NO PROCESADO",
+      "category": "cat_rayitos_0268",
+      "price": 800,
+      "duration": 67,
+      "badge": "",
+      "assignedWorkerIds": [
+        "w_1785290718227"
+      ],
+      "visible": true,
+      "desc": "Técnica tradicional de iluminación con gorro diseñada exclusivamente para cabellos vírgenes (no procesados previamente). Permite extraer mechones finos desde la raíz para lograr un contraste clásico, definido y luminoso de aspecto natural, cuidando al máximo la salud y textura original de tu melena al no contar con químicos previos.",
+      "image": "images/1786321283_45.png"
+    }
+  ],
+  "courses": [],
+  "requestedGroups": [],
+  "courseReservations": [
+  ],
+  "benefitsClients": [],
+  "bookings": [],
+  "testimonials": [],
+  "adminUsers": [
+    {
+      "id": "u_frank_superadmin",
+      "username": "Frank",
+      "passwordHash": "6c6132124d3851706d5cdb486b750ab97899f26d45698754b3fa866436331f0e",
+      "name": "Frank (Administrador Principal)",
+      "role": "superadmin",
+      "permissions": {
+        "revenue": true,
+        "agenda": true,
+        "categories": true,
+        "services": true,
+        "courses": true,
+        "sucursales": true,
+        "workers": true,
+        "requestedGroups": true,
+        "benefits": true,
+        "testimonials": true,
+        "userManagement": true
+      }
+    }
+  ]
+}

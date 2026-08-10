@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Panel Admin - Total Beauty Salón y Academia</title>
+  <meta name="description" content="Panel Autoadministrable Integrado para Total Beauty Salón y Academia.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Leaflet.js Interactive Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="admin-mod">
+
+  <!-- Header Navigation for Admin Portal -->
+  <nav class="navbar" style="background: rgba(15, 17, 25, 0.95); border-bottom: 1.5px solid var(--accent-gold);">
+    <a href="index.html" class="logo-container">
+      <div class="logo-icon"><img src="images/logoheader.png" alt="Total Beauty Logo"></div>
+    </a>
+    
+    <div class="nav-actions" style="display: flex; gap: 0.6rem; align-items: center;">
+      <span id="loggedInBadge" style="background: rgba(230, 194, 128, 0.15); color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 0.45rem 0.9rem; border-radius: 999px; font-weight: 700; font-size: 0.85rem;">
+        <i class="fa-solid fa-user-shield"></i> <span id="currentUserNameLabel">Total Beauty </span>
+      </span>
+      <button type="button" class="btn btn-outline" onclick="logintAdmin(); return false;" style="color: #15ff00; border-color: #3ce76d; padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+        Ingresar
+      </button>
+      <a href="index.html" class="btn btn-gold" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; text-decoration: none;">
+        <i class="fa-solid fa-store"></i> Ir a Página de Clientes
+      </a>
+    </div>
+  </nav>
+
+  <!-- AUTO-MANAGED CLEAN ADMIN DASHBOARD -->
+  <div class="admin-panel-section" id="panelAdmin" style="display: block; padding-top: 2rem;">
+    
+    <div class="admin-top-banner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="section-tag" style="margin-bottom: 0.2rem;">Panel Autoadministrable Protegido</span>
+        <h2><i class="fa-solid fa-chart-pie text-gradient-gold"></i> Dashboard Integral</h2>
+        <p style="font-size: 0.88rem; color: var(--text-secondary);" id="adminWelcomeUserMsg">Haz clic en cualquier cuadro para abrir su módulo al 100% de la pantalla.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <button type="button" class="btn btn-outline" onclick="logoutAdmin(); return false;" style="background: rgba(231, 76, 60, 0.18); color: #ff4757; border: 1.5px solid #ff4757; padding: 0.6rem 1.4rem; font-size: 0.95rem; font-weight: 700; border-radius: 999px; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.35); cursor: pointer; transition: all 0.3s ease;">
+          <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión Segura
+        </button>
+      </div>
+    </div>
+
+    <!-- Admin Stats Grid (All Square Cards / "Cuadritos" inside admin-stats-grid) -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card" id="cardStatAgenda" onclick="openAdminSection('adminAgendaSection')" title="Ver Citas Agendadas">
+        <div class="stat-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+        <h3 id="adminTotalBookings">0</h3>
+        <p>Citas Agendadas</p>
+      </div>
+      
+      <div class="admin-stat-card" id="cardStatRevenue" onclick="openAdminSection('adminRevenueSection')" title="Ver Cálculo de Ingresos por Día, Mes y Año">
+        <div class="stat-icon-box"><i class="fa-solid fa-coins"></i></div>
+        <h3 id="adminTotalRevenue" style="color: var(--accent-gold);">$0 MXN</h3>
+        <p>Ingresos Estimados</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatBenefits" onclick="openAdminSection('adminBenefitsSection')" title="Ver Programa de Beneficios & Clientes VIP">
+        <div class="stat-icon-box"><i class="fa-solid fa-gift"></i></div>
+        <h3 id="adminTotalBenefitsClients" style="color: #e67e22;">0</h3>
+        <p>Programa Beneficios</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatSucursales" onclick="openAdminSection('adminSucursalesSection')" title="Ver Red de Sucursales">
+        <div class="stat-icon-box"><i class="fa-solid fa-store"></i></div>
+        <h3 id="adminTotalSucursales" style="color: var(--accent-green);">0</h3>
+        <p>Sucursales Activas</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatWorkers" onclick="openAdminSection('adminWorkersSection')" title="Ver Equipo de Trabajadoras">
+        <div class="stat-icon-box"><i class="fa-solid fa-users"></i></div>
+        <h3 id="adminTotalWorkers" style="color: #3498db;">0</h3>
+        <p>Trabajadoras Activas</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatCategories" onclick="openAdminSection('adminCategoriesSection')" title="Ver Categorías de Servicios">
+        <div class="stat-icon-box"><i class="fa-solid fa-tags"></i></div>
+        <h3 id="adminTotalCategories" style="color: #f39c12;">0</h3>
+        <p>Categorías</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatServices" onclick="openAdminSection('adminServicesSection')" title="Ver Servicios y Visibilidad">
+        <div class="stat-icon-box"><i class="fa-solid fa-sliders"></i></div>
+        <h3 id="adminTotalServices" style="color: #1abc9c;">0</h3>
+        <p>Servicios Salón</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatCourses" onclick="openAdminSection('adminCoursesSection')" title="Ver Cursos Presenciales">
+        <div class="stat-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3 id="adminTotalCourses" style="color: var(--accent-rose);">0</h3>
+        <p>Cursos Presenciales</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatGroups" onclick="openAdminSection('adminRequestedGroupsSection')" title="Ver Grupos Solicitados en Hidalgo">
+        <div class="stat-icon-box"><i class="fa-solid fa-users-viewfinder"></i></div>
+        <h3 id="adminTotalGroups" style="color: #9b59b6;">0</h3>
+        <p>Grupos Solicitados</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatTestimonials" onclick="openAdminSection('adminTestimoniosSection')" title="Ver Moderación de Testimonios">
+        <div class="stat-icon-box"><i class="fa-solid fa-comments"></i></div>
+        <h3 id="adminTotalTestimonials" style="color: var(--accent-gold);">0 (Pend.)</h3>
+        <p>Testimonios</p>
+      </div>
+
+      <div class="admin-stat-card" id="cardStatUserManagement" onclick="openAdminSection('adminUserManagementSection')" title="Gestión de Usuarios y Permisos de Personal">
+        <div class="stat-icon-box"><i class="fa-solid fa-user-lock"></i></div>
+        <h3 id="adminTotalUsers" style="color: #e74c3c;">1</h3>
+        <p>Usuarios & Permisos</p>
+      </div>
+    </div>
+
+    <!-- Admin Hidden Storage Layout Grid -->
+    <div class="admin-grid-layout" style="display: none;">
+      
+      <!-- Agenda Table Card -->
+      <div class="admin-card-box" id="adminAgendaSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-list-check text-gradient-gold"></i> Agenda Autoadministrable de Citas</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-shield-halved"></i> Prevención de empalmes</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Sucursal</th>
+                <th>Servicio</th>
+                <th>Fecha (DD/MM)</th>
+                <th>Horario & Duración</th>
+                <th>Trabajadora Asignada</th>
+                <th>Estatus</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="adminAgendaTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Programa de Beneficios & Clientes VIP Admin Section -->
+      <div class="admin-card-box" id="adminBenefitsSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-gift text-gradient-gold"></i> Programa de Beneficios & Clientes VIP</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-id-card"></i> Código único de 6 dígitos</span>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-user-plus"></i> Registrar Nuevo Cliente VIP</h4>
+        <form id="newBenefitClientForm" onsubmit="event.preventDefault(); window.handleNewBenefitClientSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div class="form-group">
+            <label>Nombre del Cliente</label>
+            <input type="text" class="form-control" id="newBC_Name" placeholder="Ej. Ana Paula López" required>
+          </div>
+
+          <div class="form-group">
+            <label>Número de WhatsApp</label>
+            <input type="tel" class="form-control" id="newBC_Phone" placeholder="Ej. 7711234567" required>
+          </div>
+
+          <div class="form-group">
+            <label>Ciudad / Municipio</label>
+            <input type="text" class="form-control" id="newBC_City" placeholder="Ej. Pachuca de Soto" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-id-card"></i> Registrar y Generar Código de 6 Dígitos
+            </button>
+          </div>
+        </form>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-users-rectangle"></i> Listado de Clientes VIP Registrados</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
+          Haz clic en el <strong>Nombre del Cliente</strong> para editar sus datos personales. Administra sus beneficios individualmente con el botón <strong>"Canjear"</strong>, edita el texto directamente en la casilla o agrega un beneficio nuevo.
+        </p>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>N° Cliente</th>
+                <th>Cliente</th>
+                <th>WhatsApp</th>
+                <th>Ciudad</th>
+                <th>Nivel VIP</th>
+                <th>Beneficios Asignados & Canje</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="adminBenefitsTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sucursales Admin Section -->
+      <div class="admin-card-box" id="adminSucursalesSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-store text-gradient-gold"></i> Red de Sucursales Salón</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-clock"></i> Horarios de apertura y cierre</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nombre Sucursal</th>
+                <th>Dirección Exacta (Hidalgo)</th>
+                <th>Ubicación GPS Exacta (Lat, Lng)</th>
+                <th>Horario Apertura</th>
+                <th>Horario Cierre</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="adminSucursalesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-square-plus"></i> Añadir Nueva Sucursal</h4>
+        <form id="newBranchForm" onsubmit="event.preventDefault(); window.handleNewBranchSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label>Nombre de Sucursal</label>
+            <input type="text" class="form-control" id="newBranchName" placeholder="Ej. Sucursal Actopan Centro" required>
+          </div>
+
+          <div class="form-group">
+            <label>Dirección Completa (Calle, N°, Col, Municipio)</label>
+            <input type="text" class="form-control" id="newBranchAddress" placeholder="Ej. Av. Hidalgo #105, Actopan, Hgo." required>
+          </div>
+
+          <div class="form-group">
+            <label>Geolocalización GPS Exacta (Formato: 20.271977, -98.952332)</label>
+            <input type="text" class="form-control" id="newBranchCoords" placeholder="Ej. 20.271977, -98.952332" style="border-color: var(--accent-gold);">
+          </div>
+
+          <div class="form-group">
+            <label>Horario Apertura</label>
+            <input type="time" class="form-control" id="newBranchOpen" value="10:00" required>
+          </div>
+
+          <div class="form-group">
+            <label>Horario Cierre</label>
+            <input type="time" class="form-control" id="newBranchClose" value="19:00" required>
+          </div>
+
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-plus"></i> Guardar Sucursal en Sistema
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Equipo de Trabajadoras Admin Section -->
+      <div class="admin-card-box" id="adminWorkersSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-users text-gradient-gold"></i> Equipo de Trabajadoras & Horarios</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-calendar-week"></i> Días laborables y turnos</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Especialista</th>
+                <th>Sucursal Asignada</th>
+                <th>Días de Trabajo</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+                <th>Estatus</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="adminWorkersTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-user-plus"></i> Agregar Nueva Trabajadora / Especialista</h4>
+        <form id="newWorkerForm" onsubmit="event.preventDefault(); window.handleNewWorkerSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label>Nombre de la Especialista</label>
+            <input type="text" class="form-control" id="newWorkerName" placeholder="Ej. Camila Morales" required>
+          </div>
+
+          <div class="form-group">
+            <label>Sucursal Asignada</label>
+            <select class="form-control" id="newWorkerBranch" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hora Entrada</label>
+            <input type="time" class="form-control" id="newWorkerStart" value="10:00" required>
+          </div>
+
+          <div class="form-group">
+            <label>Hora Salida</label>
+            <input type="time" class="form-control" id="newWorkerEnd" value="19:00" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label style="margin-bottom: 0.5rem; display: block;">Días Laborables:</label>
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+              <label><input type="checkbox" name="workerDays" value="lun" checked> Lun</label>
+              <label><input type="checkbox" name="workerDays" value="mar" checked> Mar</label>
+              <label><input type="checkbox" name="workerDays" value="mie" checked> Mié</label>
+              <label><input type="checkbox" name="workerDays" value="jue" checked> Jue</label>
+              <label><input type="checkbox" name="workerDays" value="vie" checked> Vie</label>
+              <label><input type="checkbox" name="workerDays" value="sab" checked> Sáb</label>
+              <label><input type="checkbox" name="workerDays" value="dom"> Dom</label>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-plus"></i> Registrar Especialista
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Categories Admin Section -->
+      <div class="admin-card-box" id="adminCategoriesSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-tags text-gradient-gold"></i> Categorías de Servicios</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-layer-group"></i> Organización del catálogo</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre de la Categoría</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="adminCategoriesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-folder-plus"></i> Añadir Nueva Categoría</h4>
+        <form id="newCategoryForm" onsubmit="event.preventDefault(); window.handleNewCategorySubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label>Identificador Único (Sin espacios ni acentos)</label>
+            <input type="text" class="form-control" id="newCatId" placeholder="Ej. masajes" required>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre Visible de la Categoría</label>
+            <input type="text" class="form-control" id="newCatName" placeholder="Ej. Masajes & Spa" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-plus"></i> Guardar Categoría
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Services & Visibility Admin Section -->
+      <div class="admin-card-box" id="adminServicesSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-sliders text-gradient-gold"></i> Servicios en Salón de Belleza</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-eye"></i> Visibilidad e imágenes</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nombre del Servicio</th>
+                <th>Precio ($ MXN)</th>
+                <th>Duración (min)</th>
+                <th>Especialistas Capacitadas</th>
+                <th>Visibilidad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="adminServicesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Crear Nuevo Servicio de Salón</h4>
+        <form id="newServiceForm" onsubmit="event.preventDefault(); window.handleNewServiceSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label>Nombre del Servicio</label>
+            <input type="text" class="form-control" id="newSrvName" placeholder="Ej. Pedicura Spa Rusa" required>
+          </div>
+
+          <div class="form-group">
+            <label>Categoría</label>
+            <select class="form-control" id="newSrvCategory" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Precio ($ MXN)</label>
+            <input type="number" class="form-control" id="newSrvPrice" placeholder="Ej. 450" required>
+          </div>
+
+          <div class="form-group">
+            <label>Duración estimada (Minutos)</label>
+            <input type="number" class="form-control" id="newSrvDuration" placeholder="Ej. 60" required>
+          </div>
+
+          <div class="form-group">
+            <label>Descuento / Etiqueta Destacada (Opcional)</label>
+            <input type="text" class="form-control" id="newSrvBadge" placeholder="Ej. 🔥 20% OFF / ✨ Servicio Estrella / 🎁 Exfoliación Gratis">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Fotografía Representativa del Servicio</label>
+            <div style="display: flex; gap: 0.8rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-light);">
+              <input type="file" id="newSrvImageFile" accept="image/*" class="form-control" style="padding: 0.4rem;" onchange="updateFileLabel(this)">
+              <span class="file-name-indicator" style="font-size: 0.82rem; color: var(--text-muted);">Sin archivo seleccionado</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Descripción detallada del servicio</label>
+            <textarea class="form-control" id="newSrvDesc" rows="3" placeholder="Describe qué incluye el servicio y sus beneficios..." required></textarea>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label style="margin-bottom: 0.5rem; display: block;">Especialistas capacitadas para realizar este servicio:</label>
+            <div id="newSrvWorkersCheckboxes" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-plus"></i> Publicar Servicio en Salón
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Courses Admin Section -->
+      <div class="admin-card-box" id="adminCoursesSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-graduation-cap text-gradient-gold"></i> Cursos Presenciales Publicados</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-map-pin"></i> Sincronizados con el Mapa</span>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre del Curso</th>
+                <th>Sede / Ubicación Exacta</th>
+                <th>Geolocalización GPS (Lat, Lng)</th>
+                <th>Fecha / Horario</th>
+                <th>Inversión ($ MXN)</th>
+                <th>Material</th>
+                <th>Visibilidad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="adminCoursesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-certificate"></i> Publicar Nuevo Curso Presencial</h4>
+        <form id="newCourseForm" onsubmit="event.preventDefault(); window.handleNewCourseSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <input type="hidden" id="newCourseOriginGroupId" value="">
+          <div class="form-group">
+            <label>Título del Curso</label>
+            <input type="text" class="form-control" id="newCourseTitle" placeholder="Ej. Master en Uñas Esculpidas & Polygel" required>
+          </div>
+
+          <div class="form-group">
+            <label>Sede o Ciudad (Ej. Salón Principal Pachuca / Actopan)</label>
+            <input type="text" class="form-control" id="newCourseLocation" placeholder="Ej. Salón Principal Pachuca / Actopan" required>
+          </div>
+
+          <div class="form-group">
+            <label>Geolocalización GPS Exacta (Formato: 20.271977, -98.952332)</label>
+            <input type="text" class="form-control" id="newCourseCoords" placeholder="Ej. 20.271977, -98.952332" style="border-color: var(--accent-rose);">
+          </div>
+
+          <div class="form-group">
+            <label>Fecha y Horario (Ej. 12 y 13 de Agosto)</label>
+            <input type="text" class="form-control" id="newCourseDateTime" placeholder="Ej. 12 y 13 de Agosto" required>
+          </div>
+
+          <div class="form-group">
+            <label>Inversión ($ MXN)</label>
+            <input type="number" class="form-control" id="newCoursePrice" placeholder="Ej. 3500" required>
+          </div>
+
+          <div class="form-group">
+            <label>Duración (Ej. 2 Días - 16 Horas)</label>
+            <input type="text" class="form-control" id="newCourseDuration" placeholder="Ej. 2 Días (16 Horas)" required>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo de Certificado</label>
+            <input type="text" class="form-control" id="newCourseCertificate" placeholder="Ej. Validez Curricular" required>
+          </div>
+
+          <div class="form-group">
+            <label>Modalidad / Etiqueta Destacada del Curso</label>
+            <input type="text" class="form-control" id="newCourseModality" placeholder="Ej. 100% Presencial en Salón / Práctica en Modelo Real" value="100% Presencial en Salón" required>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Fotografía de Portada del Curso</label>
+            <div style="display: flex; gap: 0.8rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-light);">
+              <input type="file" id="newCourseImageFile" accept="image/*" class="form-control" style="padding: 0.4rem;" onchange="updateFileLabel(this)">
+              <span class="file-name-indicator" style="font-size: 0.82rem; color: var(--text-muted);">Sin archivo seleccionado</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Descripción completa del temario y dinámica</label>
+            <textarea class="form-control" id="newCourseDesc" rows="3" placeholder="Detalla los temas que aprenderá la alumna..." required></textarea>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label><input type="checkbox" id="newCourseMaterial" checked> ¿Incluye Kit de Materiales Prácticos?</label>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-rose" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-graduation-cap"></i> Publicar Curso Presencial en Mapa y Sitio
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quórum Requested Groups Admin Section -->
+      <div class="admin-card-box" id="adminRequestedGroupsSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-users-viewfinder text-gradient-gold"></i> Quórum de Grupos Solicitados en Hidalgo</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-bullhorn"></i> Publicación al 80% de cupo</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Municipio</th>
+                <th>Curso Solicitado</th>
+                <th>Alumnas Inscritas</th>
+                <th>Progreso Quórum</th>
+                <th>Lista de Interesadas</th>
+                <th>Estatus</th>
+                <th>Acción de Publicación</th>
+              </tr>
+            </thead>
+            <tbody id="adminRequestedGroupsTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Revenue Calculator & Stats Section -->
+      <div class="admin-card-box" id="adminRevenueSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-coins text-gradient-gold"></i> Cálculo de Ingresos Estimados</h3>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-chart-line"></i> Reportes financieros automáticos</span>
+        </div>
+
+        <!-- Filter Controls Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-light);">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-gold); margin-right: 0.4rem;">Filtrar Categoría:</span>
+            <button type="button" class="btn btn-gold btn-revenue-cat active" id="revCatSalonBtn" onclick="switchRevenueCategoryView('salon')">
+              💅 Servicios Salón
+            </button>
+            <button type="button" class="btn btn-outline btn-revenue-cat" id="revCatCursosBtn" onclick="switchRevenueCategoryView('cursos')">
+              🎓 Cursos Presenciales
+            </button>
+            <button type="button" class="btn btn-outline btn-revenue-cat" id="revCatGlobalBtn" onclick="switchRevenueCategoryView('global')">
+              🌐 Total Consolidado
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-outline btn-revenue-period active" id="revFilterAllBtn" onclick="renderRevenueTable('all')">Todos</button>
+            <button type="button" class="btn btn-outline btn-revenue-period" id="revFilterTodayBtn" onclick="renderRevenueTable('today')">Hoy</button>
+            <button type="button" class="btn btn-outline btn-revenue-period" id="revFilterMonthBtn" onclick="renderRevenueTable('month')">Este Mes</button>
+            <button type="button" class="btn btn-outline btn-revenue-period" id="revFilterYearBtn" onclick="renderRevenueTable('year')">Año 2026</button>
+          </div>
+        </div>
+
+        <!-- 4 Summary KPI Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-light); padding: 1.2rem; border-radius: 12px; text-align: center;">
+            <small style="color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;" id="lblRevToday">Servicios Salón (Hoy)</small>
+            <h3 style="color: var(--accent-gold); font-size: 1.5rem; margin: 0.3rem 0;" id="revenueTodayAmount">$0 MXN</h3>
+            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="revenueTodayCount">0 registro(s) hoy</span>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px solid var(--border-light); padding: 1.2rem; border-radius: 12px; text-align: center;">
+            <small style="color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;" id="lblRevMonth">Servicios (este Mes)</small>
+            <h3 style="color: #2ecc71; font-size: 1.5rem; margin: 0.3rem 0;" id="revenueMonthAmount">$0 MXN</h3>
+            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="revenueMonthCount">0 registro(s) este mes</span>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px solid var(--border-light); padding: 1.2rem; border-radius: 12px; text-align: center;">
+            <small style="color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;" id="lblRevYear">Servicios del Año (2026)</small>
+            <h3 style="color: #3498db; font-size: 1.5rem; margin: 0.3rem 0;" id="revenueYearAmount">$0 MXN</h3>
+            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="revenueYearCount">0 registro(s) este año</span>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1.5px solid var(--accent-gold); padding: 1.2rem; border-radius: 12px; text-align: center; box-shadow: var(--shadow-glow);">
+            <small style="color: var(--accent-gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;" id="lblRevTotal">Total Acumulado</small>
+            <h3 style="color: var(--accent-gold); font-size: 1.6rem; margin: 0.3rem 0;" id="revenueTotalAmount">$0 MXN</h3>
+            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="revenueTotalCount">0 registro(s) histórico</span>
+          </div>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-receipt"></i> Detalle de Transacciones Financieras Registradas</h4>
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Origen</th>
+                <th>Cliente / Alumna</th>
+                <th>Concepto</th>
+                <th>Sucursal / Municipio</th>
+                <th>Fecha</th>
+                <th>Monto Estimado ($ MXN)</th>
+              </tr>
+            </thead>
+            <tbody id="adminRevenueTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Moderación de Testimonios Admin Section -->
+      <div class="admin-card-box" id="adminTestimoniosSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-comments text-gradient-gold"></i> Moderación de Testimonios & Reseñas</h3>
+          <button type="button" class="btn btn-gold" id="adminTestimonialsFilterBtn" onclick="toggleAdminShowAllTestimonials()" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">
+            <i class="fa-solid fa-eye"></i> Ver todos los testimonios con acciones
+          </button>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
+          Los testimonios ya aprobados están <strong>ocultos por defecto</strong> para mantener limpia la bandeja de moderación. Usa el botón de arriba para ver todos y usar los botones de acción.
+        </p>
+
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Autor & Rol</th>
+                <th>Valoración</th>
+                <th>Título & Opinión</th>
+                <th>Fecha</th>
+                <th>Estatus</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="adminTestimoniosTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin Users & Permissions Management Section (Solo Superadmin) -->
+      <div class="admin-card-box" id="adminUserManagementSection">
+        <div class="admin-card-header">
+          <h3><i class="fa-solid fa-user-lock text-gradient-gold"></i> Gestión de Usuarios & Permisos de Personal</h3>
+          <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 700;"><i class="fa-solid fa-crown"></i> Exclusivo Superadmin</span>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
+          Crea cuentas de acceso para tus trabajadoras o personal administrativo y <strong>activa o desactiva qué secciones del Panel Admin tienen permiso de ver y modificar</strong>. Las contraseñas se almacenan con encriptación SHA-256 segura.
+        </p>
+
+        <!-- Link Generator Box for Worker Self-Registration -->
+        <div style="background: rgba(230, 194, 128, 0.08); border: 1px dashed var(--accent-gold); padding: 1.1rem; border-radius: 14px; margin-bottom: 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem; font-size: 1.05rem;"><i class="fa-solid fa-link"></i> Enlace de Auto-Registro para Trabajadoras</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Envía este link por WhatsApp o mensaje para que tus trabajadoras creen su propio usuario y contraseña.</p>
+          </div>
+          <button type="button" class="btn btn-gold" onclick="copyWorkerRegistrationLink()" style="font-weight: 700; white-space: nowrap;">
+            <i class="fa-solid fa-copy"></i> Copiar Link de Registro
+          </button>
+        </div>
+
+        <div class="table-responsive" style="margin-bottom: 2rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Rol</th>
+                <th>Permisos Concedidos</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="adminUsersTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-bottom: 1rem; color: var(--accent-gold); font-size: 1.1rem;"><i class="fa-solid fa-user-plus"></i> Registrar Nuevo Usuario / Trabajadora con Acceso</h4>
+        <form id="newUserForm" onsubmit="event.preventDefault(); window.handleNewAdminUserSubmit(event); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div class="form-group">
+            <label>Usuario de Acceso (Sin espacios)</label>
+            <input type="text" class="form-control" id="newUserUsername" placeholder="Ej. camila_pachuca" required>
+          </div>
+
+          <div class="form-group">
+            <label>Contraseña de Acceso</label>
+            <input type="password" class="form-control" id="newUserPassword" placeholder="••••••••" required autocomplete="new-password">
+          </div>
+
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" class="form-control" id="newUserName" placeholder="Ej. Camila Morales" required>
+          </div>
+
+          <div class="form-group">
+            <label>Rol de Usuario</label>
+            <select class="form-control" id="newUserRole">
+              <option value="worker">👥 Personal / Trabajadora</option>
+              <option value="admin">⭐ Administrador Secundario</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1; background: rgba(255,255,255,0.03); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border-light);">
+            <label style="font-weight: 700; color: var(--accent-gold); margin-bottom: 0.8rem; display: block;">
+              <i class="fa-solid fa-sliders"></i> Selecciona los Permisos de Módulos que puede ver este Usuario:
+            </label>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem;">
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_revenue" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📊 Balance & Ganancias
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_agenda" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📅 Agenda de Citas
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_categories" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🏷️ Categorías
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_services" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> ✂️ Servicios Salón
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_courses" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🎓 Cursos Presenciales
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_sucursales" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🏢 Red de Sucursales
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_workers" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 👥 Trabajadoras & Horarios
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_requestedGroups" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📍 Quórum Solicitado
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_benefits" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 👑 Beneficios VIP
+              </label>
+
+              <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="perm_testimonials" checked style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 💬 Moderación Testimonios
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-user-check"></i> Crear Usuario & Conceder Permisos
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULLSCREEN OVERLAY MODAL FOR ADMIN MODULES (WITH FLOATING RED CLOSE BUTTON ON THE RIGHT) -->
+  <div class="admin-fullscreen-modal" id="adminFullscreenModal">
+    <button type="button" class="floating-red-close-btn" onclick="closeAdminSection()" title="Cerrar ventana y volver al Dashboard">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <div id="adminFullscreenContainer" style="max-width: 1300px; margin: 0 auto; padding-top: 1rem;">
+      <!-- Active Section Element Moved Dynamically Here -->
+    </div>
+  </div>
+
+  <!-- Modal Admin: Autenticación & Login Seguro (Usuarios) -->
+  <div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-card" style="max-width: 440px; background: rgba(15, 17, 25, 0.95); backdrop-filter: blur(16px); border: 1.5px solid var(--accent-gold); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(230, 194, 128, 0.3);">
+      <button type="button" class="modal-close" onclick="closeAdminLoginModal()">&times;</button>
+
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #F5D796, #E6C280); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem auto; font-size: 1.6rem; color: #000; box-shadow: 0 0 20px rgba(230, 194, 128, 0.5);">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3 class="text-gradient-gold" style="font-size: 1.4rem;">Acceso al Panel Admin</h3>
+      </div>
+
+      <form id="adminLoginForm" onsubmit="event.preventDefault(); window.processAdminLogin(event); return false;">
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-user"></i> Usuario</label>
+          <input type="text" class="form-control" id="loginUsername" placeholder="Ej. Total Beauty" required autocomplete="username" style="font-size: 1rem; padding: 0.8rem;">
+        </div>
+
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-key"></i> Contraseña</label>
+          <div style="position: relative;">
+            <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" style="font-size: 1rem; padding: 0.8rem 2.5rem 0.8rem 0.8rem;">
+            <button type="button" onclick="togglePasswordVisibility('loginPassword', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem;">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="loginErrorMsg" style="display: none; color: #e74c3c; background: rgba(231, 76, 60, 0.15); border: 1px solid rgba(231, 76, 60, 0.4); padding: 0.6rem; border-radius: 8px; font-size: 0.82rem; margin-bottom: 1rem; text-align: center;">
+          <i class="fa-solid fa-triangle-exclamation"></i> Usuario o contraseña incorrectos.
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 1rem; font-weight: 700;">
+          <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión en Panel Admin
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Auto-Registro de Personal / Trabajadoras (Link de Invitación) -->
+  <div class="modal-overlay" id="workerSelfRegistrationModal">
+    <div class="modal-card" style="max-width: 480px; background: rgba(15, 17, 25, 0.95); backdrop-filter: blur(16px); border: 1.5px solid var(--accent-gold); box-shadow: 0 15px 40px rgba(0,0,0,0.9), 0 0 30px rgba(230, 194, 128, 0.3);">
+      <button type="button" class="modal-close" onclick="closeWorkerSelfRegistrationModal()">&times;</button>
+
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #F5D796, #E6C280); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem auto; font-size: 1.6rem; color: #000; box-shadow: 0 0 20px rgba(230, 194, 128, 0.5);">
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <h3 class="text-gradient-gold" style="font-size: 1.4rem;">Registro de Personal / Trabajadora</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">
+          Crea tu usuario y contraseña de acceso al Panel Admin de EJEMPLO WEB.
+        </p>
+      </div>
+
+      <form id="workerSelfRegisterForm" onsubmit="event.preventDefault(); window.processWorkerSelfRegistration(event); return false;">
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-id-card"></i> Tu Nombre Completo</label>
+          <input type="text" class="form-control" id="selfRegName" placeholder="Ej. Camila Morales" required style="font-size: 1rem; padding: 0.8rem;">
+        </div>
+
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-user"></i> Elige tu Nombre de Usuario (Sin espacios)</label>
+          <input type="text" class="form-control" id="selfRegUsername" placeholder="Ej. camila_pachuca" required autocomplete="username" style="font-size: 1rem; padding: 0.8rem;">
+        </div>
+
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-key"></i> Crea tu Contraseña</label>
+          <div style="position: relative;">
+            <input type="password" class="form-control" id="selfRegPassword" placeholder="••••••••" required autocomplete="new-password" style="font-size: 1rem; padding: 0.8rem 2.5rem 0.8rem 0.8rem;">
+            <button type="button" onclick="togglePasswordVisibility('selfRegPassword', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem;">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="selfRegErrorMsg" style="display: none; color: #e74c3c; background: rgba(231, 76, 60, 0.15); border: 1px solid rgba(231, 76, 60, 0.4); padding: 0.6rem; border-radius: 8px; font-size: 0.82rem; margin-bottom: 1rem; text-align: center;"></div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 0.8rem; font-size: 1rem; font-weight: 700;">
+          <i class="fa-solid fa-user-check"></i> Registrar Mi Cuenta de Personal
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Editar Permisos de Usuario -->
+  <div class="modal-overlay" id="editUserPermissionsModal">
+    <div class="modal-card" style="max-width: 650px;">
+      <button type="button" class="modal-close" onclick="closeEditUserPermissionsModal()">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold"><i class="fa-solid fa-user-gear"></i> Editar Permisos de Usuario</h3>
+        <p>Modifica el nombre, rol y los permisos de módulos para <strong id="editUserTitleName" style="color: var(--accent-gold);">--</strong>.</p>
+      </div>
+
+      <form id="editUserForm" onsubmit="event.preventDefault(); window.saveEditedUserPermissions(); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <input type="hidden" id="editUserIndex">
+
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text" class="form-control" id="editUserUsername" readonly style="background: rgba(255,255,255,0.05); font-weight: bold; color: var(--accent-gold);">
+        </div>
+
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" class="form-control" id="editUserName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Cambiar Contraseña (Opcional)</label>
+          <input type="password" class="form-control" id="editUserPassword" placeholder="Dejar en blanco para conservar actual" autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+          <label>Rol de Usuario</label>
+          <select class="form-control" id="editUserRole">
+            <option value="worker">👥 Personal / Trabajadora</option>
+            <option value="admin">⭐ Administrador Secundario</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1; background: rgba(255,255,255,0.03); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border-light);">
+          <label style="font-weight: 700; color: var(--accent-gold); margin-bottom: 0.8rem; display: block;">
+            <i class="fa-solid fa-sliders"></i> Permisos de Módulos Permitidos:
+          </label>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem;">
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_revenue" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📊 Balance & Ganancias
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_agenda" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📅 Agenda de Citas
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_categories" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🏷️ Categorías
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_services" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> ✂️ Servicios Salón
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_courses" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🎓 Cursos Presenciales
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_sucursales" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 🏢 Red de Sucursales
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_workers" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 👥 Trabajadoras & Horarios
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_requestedGroups" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 📍 Quórum Solicitado
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_benefits" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 👑 Beneficios VIP
+            </label>
+
+            <label style="cursor: pointer; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" id="editPerm_testimonials" style="accent-color: var(--accent-gold); width: 18px; height: 18px;"> 💬 Moderación Testimonios
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1rem;">
+          <button type="button" class="btn btn-outline" onclick="closeEditUserPermissionsModal()">Cancelar</button>
+          <button type="submit" class="btn btn-gold"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios de Permisos</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Editar Cliente VIP del Programa de Beneficios -->
+  <div class="modal-overlay" id="editBenefitClientModal">
+    <div class="modal-card" style="max-width: 650px;">
+      <button type="button" class="modal-close" onclick="closeEditBenefitClientModal()">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold"><i class="fa-solid fa-pen-to-square"></i> Editar Cliente VIP</h3>
+        <p>Edita el Nombre, WhatsApp, Ciudad y administra los Beneficios Asignados del cliente.</p>
+      </div>
+
+      <form id="editBenefitClientForm" onsubmit="event.preventDefault(); window.saveEditedBenefitClient(); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <input type="hidden" id="editBC_Index">
+
+        <div class="form-group">
+          <label>N° de Cliente (Único)</label>
+          <input type="text" class="form-control" id="editBC_ClientNumber" readonly style="background: rgba(255,255,255,0.05); font-weight: bold; color: var(--accent-gold); letter-spacing: 2px;">
+        </div>
+
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" class="form-control" id="editBC_Name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Número de WhatsApp</label>
+          <input type="tel" class="form-control" id="editBC_Phone" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ciudad / Municipio</label>
+          <input type="text" class="form-control" id="editBC_City" required>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Beneficios Asignados (Escribe cada beneficio en una línea nueva)</label>
+          <textarea class="form-control" id="editBC_Benefits" rows="4" placeholder="Ej. 10% de descuento en salón&#10;Limpieza facial en cumpleaños" required></textarea>
+        </div>
+
+        <div style="grid-column: 1 / -1; background: var(--bg-primary); padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.88rem; color: var(--text-secondary);">Nivel Automático Calculado:</span>
+          <strong id="editBC_AutoLevelBadge" style="font-size: 1rem; color: var(--accent-gold);">🥇 Cliente VIP Gold</strong>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+          <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios del Cliente VIP
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Editar Servicio Salón -->
+  <div class="modal-overlay" id="editServiceModal">
+    <div class="modal-card" style="max-width: 650px;">
+      <button type="button" class="modal-close" onclick="closeEditServiceModal()">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold"><i class="fa-solid fa-pen-to-square"></i> Editar Servicio Salón</h3>
+        <p>Actualiza la imagen, nombre, precio, categoría o descripción del servicio.</p>
+      </div>
+
+      <form id="editServiceForm" onsubmit="event.preventDefault(); window.saveEditedService(); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <input type="hidden" id="editSrvIndex">
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Fotografía del Servicio</label>
+          <div style="display: flex; gap: 1rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-light); flex-wrap: wrap;">
+            <img id="editSrvImagePreview" src="" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-light);" onerror="this.src='images/course_nails.jpg'">
+            <input type="file" id="editSrvImageFile" accept="image/*" class="form-control" style="padding: 0.4rem; flex: 1;" onchange="updateFileLabel(this)">
+            <span class="file-name-indicator" style="font-size: 0.82rem; color: var(--text-muted);">Sin cambios de archivo</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre del Servicio</label>
+          <input type="text" class="form-control" id="editSrvName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Categoría</label>
+          <select class="form-control" id="editSrvCategory" required>
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Precio ($ MXN)</label>
+          <input type="number" class="form-control" id="editSrvPrice" required>
+        </div>
+
+        <div class="form-group">
+          <label>Duración (Minutos)</label>
+          <input type="number" class="form-control" id="editSrvDuration" required>
+        </div>
+
+        <div class="form-group">
+          <label>Descuento / Etiqueta Destacada (Opcional)</label>
+          <input type="text" class="form-control" id="editSrvBadge" placeholder="Ej. 🔥 20% OFF / ✨ Servicio Estrella / 🎁 Exfoliación Gratis">
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Descripción</label>
+          <textarea class="form-control" id="editSrvDesc" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1rem;">
+          <button type="button" class="btn btn-outline" onclick="closeEditServiceModal()">Cancelar</button>
+          <button type="submit" class="btn btn-gold"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios del Servicio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Editar Curso Presencial -->
+  <div class="modal-overlay" id="editCourseModal">
+    <div class="modal-card" style="max-width: 650px;">
+      <button type="button" class="modal-close" onclick="closeEditCourseModal()">&times;</button>
+      <div class="modal-header">
+        <h3 class="text-gradient-gold"><i class="fa-solid fa-pen-to-square"></i> Editar Curso Presencial</h3>
+        <p>Edita los datos del curso, ubicación GPS, precio y material incluido.</p>
+      </div>
+
+      <form id="editCourseForm" onsubmit="event.preventDefault(); window.saveEditedCourse(); return false;" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <input type="hidden" id="editCourseIndex">
+
+        <div class="form-group">
+          <label>Título del Curso</label>
+          <input type="text" class="form-control" id="editCourseTitle" required>
+        </div>
+
+        <div class="form-group">
+          <label>Sede o Ubicación (Ej. Salón Principal Pachuca / Actopan)</label>
+          <input type="text" class="form-control" id="editCourseLocation" required>
+        </div>
+
+        <div class="form-group">
+          <label>Geolocalización GPS Exacta (Lat, Lng)</label>
+          <input type="text" class="form-control" id="editCourseCoords" placeholder="Ej. 20.271977, -98.952332" style="border-color: var(--accent-rose);">
+        </div>
+
+        <div class="form-group">
+          <label>Fecha y Horario</label>
+          <input type="text" class="form-control" id="editCourseDateTime" required>
+        </div>
+
+        <div class="form-group">
+          <label>Inversión ($ MXN)</label>
+          <input type="number" class="form-control" id="editCoursePrice" required>
+        </div>
+
+        <div class="form-group">
+          <label>Duración</label>
+          <input type="text" class="form-control" id="editCourseDuration" required>
+        </div>
+
+        <div class="form-group">
+          <label>Certificado</label>
+          <input type="text" class="form-control" id="editCourseCertificate" required>
+        </div>
+
+        <div class="form-group">
+          <label>Modalidad / Etiqueta Destacada del Curso</label>
+          <input type="text" class="form-control" id="editCourseModality" placeholder="Ej. 100% Presencial en Salón / Práctica en Modelo Real" required>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Cambiar Fotografía de Portada (Opcional)</label>
+          <div style="display: flex; gap: 0.8rem; align-items: center; background: rgba(255,255,255,0.03); padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-light);">
+            <input type="file" id="editCourseImageFile" accept="image/*" class="form-control" style="padding: 0.4rem;" onchange="updateFileLabel(this)">
+            <span class="file-name-indicator" style="font-size: 0.82rem; color: var(--text-muted);">Sin archivo seleccionado</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Descripción del Curso</label>
+          <textarea class="form-control" id="editCourseDesc" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label><input type="checkbox" id="editCourseMaterial"> ¿Incluye Kit de Materiales Prácticos?</label>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1rem;">
+          <button type="button" class="btn btn-outline" onclick="closeEditCourseModal()">Cancelar</button>
+          <button type="submit" class="btn btn-gold"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Admin: Generar Tarjeta de Lealtad (VIP Loyalty Card) -->
+  <div class="modal-overlay" id="newClientCardModal">
+    <div class="modal-card" style="max-width: 480px; text-align: center; background: linear-gradient(135deg, #151720, #0F1119); border: 2px solid var(--accent-gold); box-shadow: 0 0 35px rgba(230, 194, 128, 0.4);">
+      <button type="button" class="modal-close" onclick="closeNewClientCardModal()">&times;</button>
+      
+      <div style="background: linear-gradient(135deg, #F5D796, #E6C280); color: #000; padding: 0.4rem 1rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; display: inline-block; margin-bottom: 0.8rem;">
+        <i class="fa-solid fa-crown"></i> Tarjeta Digital de Lealtad VIP
+      </div>
+
+      <h3 id="cardClientName" style="color: #FFF; font-size: 1.5rem; margin-bottom: 0.2rem;">Ana Paula López</h3>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.2rem;" id="cardClientCity"><i class="fa-solid fa-location-dot"></i> Pachuca de Soto</p>
+
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1.5px dashed var(--accent-gold); padding: 1.2rem; border-radius: 14px; margin-bottom: 1.5rem;">
+        <small style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 0.3rem;">Código Único de Cliente</small>
+        <span id="cardClientNumber" style="font-size: 2.2rem; font-weight: 900; letter-spacing: 6px; color: var(--accent-gold); text-shadow: 0 0 15px rgba(230, 194, 128, 0.6);">849201</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-around; margin-bottom: 1.5rem; background: var(--bg-card); padding: 0.8rem; border-radius: 10px; border: 1px solid var(--border-light);">
+        <div>
+          <small style="color: var(--text-muted); font-size: 0.7rem; display: block;">WhatsApp</small>
+          <strong id="cardClientPhone" style="font-size: 0.9rem; color: var(--accent-gold);">7711234567</strong>
+        </div>
+        <div>
+          <small style="color: var(--text-muted); font-size: 0.7rem; display: block;">Estatus Inicial</small>
+          <strong id="cardClientLevel" style="font-size: 0.9rem; color: #2ecc71;">🆕 Cliente Nuevo</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.6rem;">
+        <button type="button" class="btn btn-gold" id="sendCardWaBtn" style="width: 100%; justify-content: center;">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Tarjeta por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert & Confirm Dialog Modal -->
+  <div class="modal-overlay" id="customDialogModal">
+    <div class="modal-card" style="max-width: 440px; text-align: center;">
+      <i id="customDialogIcon" class="fa-solid fa-circle-exclamation" style="font-size: 2.8rem; color: var(--accent-gold); margin-bottom: 1rem; display: block;"></i>
+      <h3 id="customDialogTitle" class="text-gradient-gold" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Atención</h3>
+      <p id="customDialogMessage" style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;"></p>
+      
+      <div style="display: flex; gap: 0.8rem; justify-content: center;">
+        <button type="button" class="btn btn-outline" id="customDialogCancelBtn" style="display: none;">Cancelar</button>
+        <button type="button" class="btn btn-gold" id="customDialogOkBtn">Aceptar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast" id="toastNotification">
+    <i class="fa-solid fa-circle-check text-gradient-gold" style="font-size: 1.2rem;"></i>
+    <span id="toastMessage" style="z-index: 999999999;">¡Acción realizada con éxito!</span>
+  </div>
+
+
+
+  <script src="app.js"></script>
+</body>
+</html>
