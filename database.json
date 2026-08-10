@@ -880,8 +880,7 @@
   ],
   "courses": [],
   "requestedGroups": [],
-  "courseReservations": [
-  ],
+  "courseReservations": [],
   "benefitsClients": [],
   "bookings": [],
   "testimonials": [],
@@ -904,6 +903,25 @@
         "benefits": true,
         "testimonials": true,
         "userManagement": true
+      }
+    },
+    {
+      "id": "u_1786330039902",
+      "username": "prueba",
+      "passwordHash": "c9232b8812e22fff8a0d27324becd4e955ac6b64c6af50b6faca84a1bc85cbe7",
+      "name": "Usuario Temporal",
+      "role": "admin",
+      "permissions": {
+        "revenue": false,
+        "agenda": true,
+        "categories": true,
+        "services": true,
+        "courses": true,
+        "sucursales": true,
+        "workers": true,
+        "requestedGroups": true,
+        "benefits": true,
+        "testimonials": true
       }
     }
   ]
