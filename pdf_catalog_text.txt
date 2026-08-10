@@ -1,0 +1,10 @@
+cd /d "C:\Users\Marbella\.gemini\antigravity\scratch\salon_academia_web" && python server.py 8000
+
+
+
+🏪 Página de Clientes (Sitio Web Público):
+👉 http://localhost:8000
+
+🔒 Panel Admin & IntraNet (Gestión Autoadministrable):
+👉 http://localhost:8000/general.html
+(Usuario: Frank | Contraseña: 0401Frank)

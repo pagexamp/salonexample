@@ -1,4 +1,4 @@
-// Interactive Web App Engine for EJEMPLO WEB (MÉXICO - HIDALGO)
+// Interactive Web App Engine for (MÉXICO - HIDALGO)
 // Clean Dashboard View + All Square Cards inside admin-stats-grid + Fullscreen 100% Admin Modules + Red Floating Close Button + Benefits Loyalty Program (Unique 6-digit Customer Numbers) + Scrollable Modals & Customer Number Validation + Non-closing bookModal on Outside Click & No Scrollbar on Time Slots + Global Body Scroll Lock on Modals + Dynamic 30-min Time Slots (Real-time today check + Worker shift end & Branch closing validation + Editable Worker Branch Assignment + 12-Hour AM/PM Time Formatting Engine) + Editable Benefits & Clickable Client Name Editing
 
 // 1. CONSTANTS & DEFAULT DATA
@@ -12,135 +12,30 @@ const ALL_DAYS = [
   { id: 'dom', label: 'Dom' }
 ];
 
-const defaultSucursales = [
-  { id: 'suc1', name: 'Sucursal Pachuca Centro', address: 'Av. Revolución #450, Col. Centro, Pachuca, Hgo.', openTime: '10:00', closeTime: '19:00', manager: 'Valeria Gómez', status: 'operativa' },
-  { id: 'suc2', name: 'Sucursal Tulancingo Plaza', address: 'Calle Zaragoza #102, Centro, Tulancingo, Hgo.', openTime: '10:00', closeTime: '18:00', manager: 'Sofía Hernández', status: 'operativa' }
-];
+const defaultSucursales = [];
 
-const defaultCategories = [
-  { id: 'unas', name: 'Uñas & Gel Art' },
-  { id: 'pestanas', name: 'Pestañas & Cejas' },
-  { id: 'cabello', name: 'Cabello & Balayage' }
-];
+const defaultCategories = [];
 
-const defaultWorkers = [
-  { id: 'w1', name: 'Valeria Gómez', sucursalId: 'suc1', days: ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'], startTime: '10:00', endTime: '19:00', status: 'activa' },
-  { id: 'w2', name: 'Sofía Hernández', sucursalId: 'suc2', days: ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'], startTime: '10:00', endTime: '18:00', status: 'activa' },
-  { id: 'w3', name: 'Camila Morales', sucursalId: 'suc1', days: ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'], startTime: '11:00', endTime: '19:00', status: 'activa' },
-  { id: 'w4', name: 'Fernanda Ruiz', sucursalId: 'suc2', days: ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'], startTime: '10:00', endTime: '18:00', status: 'activa' }
-];
+const defaultWorkers = [];
 
-const defaultServices = [
-  { id: 'srv1', name: 'Manicura Gel & Art VIP', category: 'unas', price: 450, duration: 90, assignedWorkerIds: ['w1', 'w2', 'w3', 'w4'], visible: true, desc: 'Esculturado en gel de alta resistencia, nivelado Ruso, diseño personalizado y exfoliación hidratante.', image: 'images/course_nails.jpg' },
-  { id: 'srv2', name: 'Extensiones Pestañas 1 a 1', category: 'pestanas', price: 750, duration: 120, assignedWorkerIds: ['w1', 'w2', 'w3', 'w4'], visible: true, desc: 'Técnica japonesa o volumen ruso adaptado a la forma de tu ojo con fibras ultraligeras de seda.', image: 'images/course_lashes.jpg' },
-  { id: 'srv3', name: 'Lifting & Brow Lamination', category: 'pestanas', price: 550, duration: 60, assignedWorkerIds: ['w1', 'w2', 'w3', 'w4'], visible: true, desc: 'Rizado natural de pestañas con tratamiento de queratina + diseño y laminado de cejas con tinte.', image: 'images/course_lashes.jpg' },
-  { id: 'srv4', name: 'Diseño de Color & Balayage', category: 'cabello', price: 2200, duration: 180, assignedWorkerIds: ['w1', 'w2', 'w3', 'w4'], visible: true, desc: 'Colorimetría avanzada, matiz personalizado, tratamiento Plex de reconstrucción y peinado pro.', image: 'images/salon_hero.jpg' }
-];
+const defaultServices = [];
 
-const defaultCourses = [
-  {
-    id: 'c1',
-    title: 'Master en Uñas Esculpidas & Polygel',
-    desc: 'Aprende desde cero la estructura perfecta, manicura rusa, control de producto y nail art de tendencia con práctica en modelo real.',
-    price: 3500,
-    includesMaterial: true,
-    duration: '2 Días (16 Horas)',
-    certificate: 'Validez Curricular',
-    location: 'Salón Principal Pachuca',
-    modality: '100% Presencial en Salón',
-    dateTime: '12 y 13 de Agosto',
-    image: 'images/course_nails.jpg',
-    visible: true
-  },
-  {
-    id: 'c2',
-    title: 'Lash Artist & Brow Mastery',
-    desc: 'Técnica clásica 1 a 1, Volumen Ruso, visagismo de cejas y laminado. Práctica supervisada directamente por la instructora máster.',
-    price: 2800,
-    includesMaterial: true,
-    duration: '1 Día (9 Horas)',
-    certificate: 'Diploma de Especialización',
-    location: 'Salón Principal Pachuca',
-    modality: '100% Presencial en Salón',
-    dateTime: '19 de Agosto',
-    image: 'images/course_lashes.jpg',
-    visible: true
-  }
-];
+const defaultCourses = [];
 
-const defaultRequestedGroups = [
-  { id: 'rg1', municipality: 'Tulancingo de Bravo', courseTitle: 'Master en Uñas Esculpidas & Polygel', registeredStudents: 7, maxStudents: 8, studentNames: ['Mariana S.', 'Brenda Ortega', 'Fernanda Luna', 'Ivonne Juárez', 'Claudia R.', 'Rosa María T.', 'Gisela V.'], status: 'activo' },
-  { id: 'rg2', municipality: 'Tula de Allende', courseTitle: 'Lash Artist & Brow Mastery', registeredStudents: 6, maxStudents: 8, studentNames: ['Ivonne Juárez', 'Carla G.', 'Montserrat D.', 'Adriana P.', 'Paola N.', 'Beatriz H.'], status: 'activo' },
-  { id: 'rg3', municipality: 'Mineral del Monte', courseTitle: 'Master en Uñas Esculpidas & Polygel', registeredStudents: 5, maxStudents: 8, studentNames: ['Lorena Castillo', 'Yolanda M.', 'Carmen S.', 'Diana F.', 'Ximena V.'], status: 'activo' },
-  { id: 'rg4', municipality: 'Actopan', courseTitle: 'Lash Artist & Brow Mastery', registeredStudents: 4, maxStudents: 8, studentNames: ['Silvia R.', 'Teresa G.', 'Lourdes B.', 'Veronica M.'], status: 'activo' },
-  { id: 'rg5', municipality: 'Ixmiquilpan', courseTitle: 'Diseño de Color & Balayage', registeredStudents: 3, maxStudents: 8, studentNames: ['Noemí H.', 'Elizabeth C.', 'Guadalupe S.'], status: 'activo' }
-];
+const defaultRequestedGroups = [];
 
 function getTodayString() {
   const d = new Date();
   return d.toISOString().split('T')[0];
 }
 
-const defaultCourseReservations = [
-  { id: 'cr1', studentName: 'Mariana S.', courseTitle: 'Master en Uñas Esculpidas & Polygel', municipality: 'Tulancingo de Bravo', price: 3500, date: getTodayString(), status: 'confirmada' },
-  { id: 'cr2', studentName: 'Brenda Ortega', courseTitle: 'Master en Uñas Esculpidas & Polygel', municipality: 'Tulancingo de Bravo', price: 3500, date: getTodayString(), status: 'confirmada' },
-  { id: 'cr3', studentName: 'Fernanda Luna', courseTitle: 'Master en Uñas Esculpidas & Polygel', municipality: 'Tulancingo de Bravo', price: 3500, date: '2026-07-15', status: 'confirmada' },
-  { id: 'cr4', studentName: 'Ivonne Juárez', courseTitle: 'Lash Artist & Brow Mastery', municipality: 'Tula de Allende', price: 2800, date: getTodayString(), status: 'confirmada' },
-  { id: 'cr5', studentName: 'Carla G.', courseTitle: 'Lash Artist & Brow Mastery', municipality: 'Tula de Allende', price: 2800, date: '2026-07-10', status: 'confirmada' },
-  { id: 'cr6', studentName: 'Lorena Castillo', courseTitle: 'Master en Uñas Esculpidas & Polygel', municipality: 'Mineral del Monte', price: 3500, date: '2026-06-20', status: 'confirmada' }
-];
+const defaultCourseReservations = [];
 
-const defaultBenefitsClients = [
-  {
-    id: 'bc1',
-    clientNumber: '849201',
-    name: 'Ana Paula López',
-    phone: '7711234567',
-    city: 'Pachuca de Soto',
-    level: '🥇 Cliente VIP Gold',
-    benefits: [
-      { text: '10% de Descuento en tu próximo servicio de salón', redeemed: false, redeemedDate: null },
-      { text: 'Tratamiento Facial de Regalo en tu Mes de Cumpleaños', redeemed: false, redeemedDate: null },
-      { text: 'Acceso Preferencial Prioritario a Cursos Presenciales', redeemed: false, redeemedDate: null },
-      { text: 'Evaluación Capilar Gratuita con Diagnóstico Digital', redeemed: false, redeemedDate: null },
-      { text: 'Bebida VIP de Bienvenida y Gel Acondicionador de Regalo', redeemed: false, redeemedDate: null }
-    ]
-  },
-  {
-    id: 'bc2',
-    clientNumber: '531984',
-    name: 'Mariana S.',
-    phone: '7759876543',
-    city: 'Tulancingo de Bravo',
-    level: '👑 Alumna & Cliente Elite',
-    benefits: [
-      { text: 'Kit Profesional de Bienvenida Gratis', redeemed: false, redeemedDate: null },
-      { text: '15% de Descuento en Masterclass Avanzadas de Uñas', redeemed: false, redeemedDate: null },
-      { text: 'Asesoría Continua y Certificado Físico sin Costo', redeemed: false, redeemedDate: null },
-      { text: '2x1 en Servicio de Retoque de Uñas el día de tu Graduación', redeemed: false, redeemedDate: null },
-      { text: 'Entrada Prioritaria de Primera Fila en Talleres Itinerantes', redeemed: false, redeemedDate: null },
-      { text: 'Acceso a Grupo Privado VIP de Instructoras en WhatsApp', redeemed: false, redeemedDate: null }
-    ]
-  }
-];
+const defaultBenefitsClients = [];
 
-const defaultBookings = [
-  { id: 'b1', clientName: 'María García', sucursalName: 'Sucursal Pachuca Centro', serviceId: 'srv4', serviceName: 'Diseño de Color & Balayage', date: getTodayString(), startTime: '10:00', duration: 180, endTime: '13:00', workerId: 'w3', workerName: 'Camila Morales', status: 'confirmada' },
-  { id: 'b2', clientName: 'Lucía Fernández', sucursalName: 'Sucursal Pachuca Centro', serviceId: 'srv1', serviceName: 'Manicura Gel & Art VIP', date: getTodayString(), startTime: '11:00', duration: 90, endTime: '12:30', workerId: 'w1', workerName: 'Valeria Gómez', status: 'confirmada' },
-  { id: 'b3', clientName: 'Ana Paula López', sucursalName: 'Sucursal Pachuca Centro', serviceId: 'srv2', serviceName: 'Extensiones Pestañas 1 a 1', date: '2026-07-15', startTime: '14:00', duration: 120, endTime: '16:00', workerId: 'w1', workerName: 'Valeria Gómez', status: 'confirmada' },
-  { id: 'b4', clientName: 'Sofía Ramírez', sucursalName: 'Sucursal Tulancingo Plaza', serviceId: 'srv3', serviceName: 'Lifting & Brow Lamination', date: '2026-06-20', startTime: '11:00', duration: 60, endTime: '12:00', workerId: 'w4', workerName: 'Fernanda Ruiz', status: 'confirmada' }
-];
+const defaultBookings = [];
 
-const defaultTestimonials = [
-  { id: 't1', author: 'Mariana S.', role: 'Egresada Presencial', rating: 5, title: 'Inicié mi negocio en Tulancingo', comment: 'Tomé la capacitación presencial en la sede. La atención personalizada y el kit me ayudaron a atender mis propias clientas de inmediato.', date: '2026-07-20', status: 'aprobado' },
-  { id: 't2', author: 'Carla G.', role: 'Cliente Salón', rating: 5, title: 'Puntualidad en Pachuca', comment: 'Me encanta agendar online porque sé exactamente a qué hora entro y a qué hora salgo en el salón de Pachuca. Las trabajadoras son súper profesionales.', date: '2026-07-22', status: 'aprobado' },
-  { id: 't3', author: 'Brenda Ortega', role: 'Alumna de Curso', rating: 5, title: 'Excelente Masterclass de Uñas', comment: 'La práctica en modelo real y los consejos de control de acrílico y gel son inigualables. Recomendado al 100% en Hidalgo.', date: '2026-07-23', status: 'aprobado' },
-  { id: 't4', author: 'Daniela Reyes', role: 'Cliente Salón', rating: 5, title: 'Pestañas de Impacto', comment: 'Las extensiones 1 a 1 me duraron intactas más de 3 semanas. La calidad del pegamento e higiene impecable.', date: '2026-07-24', status: 'aprobado' },
-  { id: 't5', author: 'Fernanda Luna', role: 'Egresada Presencial', rating: 5, title: 'Certificado con Validez Real', comment: 'Me entregaron mi documento el último día del taller presencial en Pachuca. Ya tengo mi propio estudio de belleza.', date: '2026-07-25', status: 'aprobado' },
-  { id: 't6', author: 'Gabriela Mendoza', role: 'Cliente Salón', rating: 5, title: 'Balayage Perfecto', comment: 'Cuidaron la salud de mi cabello durante todo el proceso de decoloración. El matiz quedó precioso.', date: '2026-07-26', status: 'aprobado' },
-  { id: 't7', author: 'Ivonne Juárez', role: 'Alumna de Curso', rating: 5, title: 'Taller Presencial en Tula', comment: 'Asistí a la sede itinerante en Tula y me encantó la paciencia con la que nos explicaron cada técnica.', date: '2026-07-27', status: 'aprobado' },
-  { id: 't8', author: 'Lorena Castillo', role: 'Cliente Salón', rating: 5, title: 'Lifting de Pestañas Increíble', comment: 'Mis pestañas naturales lucen súper largas y rizadas sin necesidad de rizador. Excelente servicio.', date: '2026-07-27', status: 'aprobado' }
-];
+const defaultTestimonials = [];
 
 // 2. STATE VARIABLES
 let sucursales = defaultSucursales;
@@ -348,7 +243,7 @@ window.showCustomPrompt = function(message, title = 'Ingresar Información', def
 function calculateVIPLevel(benefitsArray) {
   if (!Array.isArray(benefitsArray)) return '🆕 Cliente Nuevo';
   const count = benefitsArray.length;
-  if (count >= 6) return '👑 Alumna & Cliente Elite';
+  if (count >= 6) return '👑 Cliente Elite';
   if (count === 5) return '🥇 Cliente VIP Gold';
   if (count === 4) return '🥈 Cliente VIP Silver';
   if (count >= 2 && count <= 3) return '🥉 Cliente VIP Bronze';
@@ -396,7 +291,7 @@ async function syncFromCentralDatabase() {
     console.warn('Central database API not reachable, using in-memory defaults.', err);
   }
 
-  // Guarantee Frank (Superadmin) always exists with correct privileges
+  // Guarantee  (Superadmin) always exists with correct privileges
   let frankUser = adminUsers.find(u => u.username.toLowerCase() === 'frank');
   const frankHash = await hashPassword('0401Frank');
   if (!frankUser) {
@@ -468,7 +363,7 @@ window.validateBookingClientNumber = function(val) {
     showToast('⚠️ El número de cliente ingresado no existe en nuestro programa de beneficios.');
     if (input) input.value = '';
     if (feedback) {
-      feedback.textContent = '❌ Número de cliente no encontrado. Se ha limpiado la casilla.';
+      feedback.textContent = '❌ Número de cliente no encontrado.';
       feedback.style.color = '#e74c3c';
     }
     return false;
@@ -516,7 +411,7 @@ window.searchClientBenefits = function() {
   const code = input.value.trim();
 
   if (!code || code.length !== 6 || isNaN(code)) {
-    showCustomAlert('Por favor ingresa un número de cliente válido de 6 dígitos (Ej. 849201).', 'Número Inválido', 'fa-solid fa-id-card');
+    showCustomAlert('Por favor ingresa un número de cliente válido de 6 dígitos.', 'Número Inválido', 'fa-solid fa-id-card');
     return;
   }
 
@@ -672,7 +567,7 @@ window.handleNewBenefitClientSubmit = async function(e) {
 
     if (waBtn) {
       waBtn.onclick = function() {
-        const text = `¡Hola ${name}! 👑 Te hemos registrado exitosamente en el Programa de Beneficios VIP de EJEMPLO WEB Hidalgo.\n\n` +
+        const text = `¡Hola ${name}! 👑 Te hemos registrado exitosamente en el Programa de Beneficios VIP de Total Beauty.\n\n` +
           `💳 Tu N° de Cliente de 6 dígitos es: *${clientNumber}*\n` +
           `📍 Ciudad: ${city}\n` +
           `🌟 Estatus: ${autoLevel}\n\n` +
@@ -995,12 +890,16 @@ window.processAdminLogin = async function(e) {
 window.logoutAdmin = function() {
   currentUser = null;
   sessionStorage.removeItem('tb_admin_session');
+  location.href= "index.html";
   showToast('🔒 Sesión cerrada de forma segura.');
   setTimeout(() => {
     openAdminLoginModal();
   }, 300);
 };
-
+window.logintAdmin = function() {
+  currentUser = null;
+    openAdminLoginModal();
+};
 window.togglePasswordVisibility = function(inputId, btnEl) {
   const input = document.getElementById(inputId);
   if (!input) return;
@@ -1034,7 +933,7 @@ window.openAdminSection = function(sectionId) {
   const hasPerm = isSuper || (currentUser && currentUser.permissions && currentUser.permissions[reqPerm] !== false);
 
   if (!hasPerm) {
-    showCustomAlert('No tienes permisos asignados para acceder a este módulo. Contacta al Administrador Principal (Frank).', 'Acceso Denegado', 'fa-solid fa-lock');
+    showCustomAlert('No tienes permisos asignados para acceder a este módulo. Contacta al Administrador Principal.', 'Acceso Denegado', 'fa-solid fa-lock');
     return;
   }
 
@@ -1233,7 +1132,7 @@ window.deleteAdminUser = async function(index) {
   if (!u) return;
 
   if (u.role === 'superadmin' || u.username.toLowerCase() === 'frank') {
-    await showCustomAlert('El usuario Administrador Principal (Frank) no puede ser eliminado.', 'Acción No Permitida', 'fa-solid fa-shield-cat');
+    await showCustomAlert('El usuario Administrador Principal  no puede ser eliminado.', 'Acción No Permitida', 'fa-solid fa-shield-cat');
     return;
   }
 
@@ -1338,7 +1237,7 @@ window.processWorkerSelfRegistration = async function(e) {
   if (loginUserField) loginUserField.value = username;
 
   openAdminLoginModal();
-  showCustomAlert(`¡Tu usuario <strong>"${username}"</strong> (${name}) ha sido registrado con éxito!<br><br>Tu Administrador Principal (Frank) activará los permisos de los módulos a los que tendrás acceso. Ya puedes iniciar sesión.`, 'Acceso Creado Exitosamente', 'fa-solid fa-circle-check');
+  showCustomAlert(`¡Tu usuario <strong>"${username}"</strong> (${name}) ha sido registrado con éxito!<br><br>Tu Administrador Principal activará los permisos de los módulos a los que tendrás acceso. Ya puedes iniciar sesión.`, 'Acceso Creado Exitosamente', 'fa-solid fa-circle-check');
   return false;
 };
 
@@ -3000,7 +2899,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showToast(`✨ ¡Cita agendada para ${name}! Atiende: ${assignedWorker.name} (${timeTo12Hr(selectedTimeSlot)} a ${timeTo12Hr(endTime)}). Estatus: Pendiente.`);
 
       setTimeout(() => {
-        let waText = `Hola EJEMPLO WEB! Deseo solicitar cita para: ${serviceName} ($${serviceObj.price} MXN) en ${branchName} el día ${formatDateDDMM(date)} de ${timeTo12Hr(selectedTimeSlot)} a ${timeTo12Hr(endTime)}. Cliente: ${name}. Atiende: ${assignedWorker.name}.`;
+        let waText = `Hola! Deseo solicitar cita para: ${serviceName} ($${serviceObj.price} MXN) en ${branchName} el día ${formatDateDDMM(date)} de ${timeTo12Hr(selectedTimeSlot)} a ${timeTo12Hr(endTime)}. Cliente: ${name}. Atiende: ${assignedWorker.name}. Total Beauty Web`;
         if (clientNumberVal) {
           waText += ` (N° de Cliente VIP: ${clientNumberVal})`;
         }
@@ -3037,7 +2936,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showToast(`🎓 ¡Lugar apartado para ${name}! Curso: ${courseStr} en ${location}.`);
 
       setTimeout(() => {
-        const waText = encodeURIComponent(`Hola EJEMPLO WEB Hidalgo! Deseo apartar mi lugar para el curso presencial: ${courseStr} en ${location}. Nombre: ${name}`);
+        const waText = encodeURIComponent(`Hola! Deseo apartar mi lugar para el curso presencial: ${courseStr} en ${location}. Nombre: ${name} Total Beauty Web`);
         window.open(`https://wa.me/?text=${waText}`, '_blank');
       }, 1500);
     });
@@ -3089,7 +2988,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showToast(`📍 Solicitud registrada para llevar el curso presencial a ${city} (${group}).`);
 
       setTimeout(() => {
-        const waText = encodeURIComponent(`Hola EJEMPLO WEB Hidalgo! Solicito llevar el curso presencial de ${courseStr} a la zona de ${city} para ${group}. Mi nombre: ${name}`);
+        const waText = encodeURIComponent(`Hola! Solicito llevar el curso presencial de ${courseStr} a la zona de ${city} para ${group}. Mi nombre: ${name} Total Beauty Web`);
         window.open(`https://wa.me/?text=${waText}`, '_blank');
       }, 1500);
     });
@@ -3432,23 +3331,7 @@ function initHidalgoMap() {
 
 // DYNAMIC HIDALGO MAP ENGINE (SINCRONIZACIÓN Y GEOLOCALIZACIÓN 100% EXACTA DE CALLE)
 const HIDALGO_COORDINATE_MAP = [
-  { keywords: ['actopan'], lat: 20.2689, lng: -98.9442 },
-  { keywords: ['pachuca'], lat: 20.1011, lng: -98.7591 },
-  { keywords: ['tulancingo'], lat: 20.0831, lng: -98.3625 },
-  { keywords: ['tula'], lat: 20.0536, lng: -99.3406 },
-  { keywords: ['mineral del monte', 'real del monte'], lat: 20.1408, lng: -98.6732 },
-  { keywords: ['ixmiquilpan'], lat: 20.4858, lng: -99.2178 },
-  { keywords: ['tizayuca'], lat: 19.8398, lng: -98.9818 },
-  { keywords: ['huichapan'], lat: 20.3753, lng: -99.6508 },
-  { keywords: ['huejutla'], lat: 21.1403, lng: -98.4189 },
-  { keywords: ['tepeapulco', 'sahagun', 'sahagún'], lat: 19.7853, lng: -98.5492 },
-  { keywords: ['apan'], lat: 19.7128, lng: -98.4528 },
   { keywords: ['mixquiahuala'], lat: 20.2311, lng: -99.2144 },
-  { keywords: ['progreso'], lat: 20.2483, lng: -99.1894 },
-  { keywords: ['zacualtipan', 'zacualtipán'], lat: 20.6483, lng: -98.6539 },
-  { keywords: ['zimapan', 'zimapán'], lat: 20.7389, lng: -99.3828 },
-  { keywords: ['atotonilco'], lat: 20.2858, lng: -98.6694 },
-  { keywords: ['mineral de la reforma', 'forjadores', 'providencia'], lat: 20.0717, lng: -98.7061 }
 ];
 
 const geocodeCache = {};
@@ -3540,7 +3423,6 @@ async function updateHidalgoMapMarkers() {
       const marker = L.marker(coords, { icon: branchIcon }).addTo(leafletMap)
         .bindPopup(`
           <div class="custom-map-popup" style="color: #FFFFFF !important; min-width: 220px; background: #151720; padding: 0.8rem; border-radius: 10px; border: 1.5px solid var(--accent-gold);">
-            <small style="color: var(--accent-gold) !important; text-transform: uppercase; font-weight: 800; font-size: 0.72rem; letter-spacing: 1px; display: block; margin-bottom: 0.2rem;">🏢 Salón</small>
             <h4 style="margin-top: 0.2rem; margin-bottom: 0.5rem; color: #E6C280 !important; font-size: 1.1rem !important; font-weight: 800 !important; border-bottom: 1px solid rgba(230, 194, 128, 0.3); padding-bottom: 0.4rem;">${s.name}</h4>
             <p style="margin-bottom: 0.6rem; font-size: 0.88rem; color: #E2E8F0 !important;">
               <i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> ${s.address || 'Dirección registrada en Panel Admin'}
@@ -4273,14 +4155,14 @@ function renderAdminPanel() {
   // Update header welcome message & current logged-in user badge
   const userLabel = document.getElementById('currentUserNameLabel');
   if (userLabel) {
-    userLabel.textContent = currentUser ? currentUser.name : 'Frank';
+    userLabel.textContent = currentUser ? currentUser.name : '';
   }
   const welcomeMsg = document.getElementById('adminWelcomeUserMsg');
   if (welcomeMsg) {
     const isSuper = currentUser && (currentUser.role === 'superadmin' || currentUser.username.toLowerCase() === 'frank');
     welcomeMsg.textContent = isSuper
-      ? 'Modo Administrador Principal (Frank). Tienes acceso total para gestionar trabajadoras, permisos y todos los módulos.'
-      : `Conectado como: ${currentUser ? currentUser.name : 'Personal'}. Puedes gestionar únicamente los módulos asignados por Frank.`;
+      ? 'Modo Administrador Principal. Tienes acceso total para gestionar trabajadoras, permisos y todos los módulos.'
+      : `Conectado como: ${currentUser ? currentUser.name : 'Personal'}. Puedes gestionar únicamente los módulos asignados por el administrador.`;
   }
 
   // RBAC Filtering for Dashboard Square Stat Cards
@@ -4761,12 +4643,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       e.ctrlKey && 
       (e.key === 'c' || e.key === 'C' || 
        e.key === 'x' || e.key === 'X' || 
-       e.key === 'v' || e.key === 'V' || 
        e.key === 's' || e.key === 'S' || 
        e.key === 'u' || e.key === 'U')
     ) {
       e.preventDefault();
-      alert("Acción deshabilitada en este sitio."); // Opcional: elimina esta línea si no quieres mostrar alerta
+      alert("Acción prihibida en este sitio."); // Opcional: elimina esta línea si no quieres mostrar alerta
     }
 
     // Bloquear tecla F12 (Herramientas de desarrollo)

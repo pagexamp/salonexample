@@ -12,24 +12,20 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
-<body class="admin-mode">
+<body class="admin-mod">
 
   <!-- Header Navigation for Admin Portal -->
   <nav class="navbar" style="background: rgba(15, 17, 25, 0.95); border-bottom: 1.5px solid var(--accent-gold);">
     <a href="index.html" class="logo-container">
-      <div class="logo-icon"><img src="images/logo.png" alt="Total Beauty Logo"></div>
-      <div class="logo-text">
-        <span class="brand-name">Total Beauty <br> Panel Admin</span>
-        <span class="brand-sub">Gestión Integral Protegida</span>
-      </div>
+      <div class="logo-icon"><img src="images/logoheader.png" alt="Total Beauty Logo"></div>
     </a>
     
     <div class="nav-actions" style="display: flex; gap: 0.6rem; align-items: center;">
       <span id="loggedInBadge" style="background: rgba(230, 194, 128, 0.15); color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 0.45rem 0.9rem; border-radius: 999px; font-weight: 700; font-size: 0.85rem;">
-        <i class="fa-solid fa-user-shield"></i> <span id="currentUserNameLabel">Frank</span>
+        <i class="fa-solid fa-user-shield"></i> <span id="currentUserNameLabel">Total Beauty </span>
       </span>
-      <button type="button" class="btn btn-outline" onclick="logoutAdmin(); return false;" style="color: #e74c3c; border-color: #e74c3c; padding: 0.45rem 0.9rem; font-size: 0.85rem;">
-        <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+      <button type="button" class="btn btn-outline" onclick="logintAdmin(); return false;" style="color: #15ff00; border-color: #3ce76d; padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+        Ingresar
       </button>
       <a href="index.html" class="btn btn-gold" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; text-decoration: none;">
         <i class="fa-solid fa-store"></i> Ir a Página de Clientes
@@ -698,11 +694,11 @@
         </div>
       </div>
 
-      <!-- Admin Users & Permissions Management Section (Solo Superadmin Frank) -->
+      <!-- Admin Users & Permissions Management Section (Solo Superadmin) -->
       <div class="admin-card-box" id="adminUserManagementSection">
         <div class="admin-card-header">
           <h3><i class="fa-solid fa-user-lock text-gradient-gold"></i> Gestión de Usuarios & Permisos de Personal</h3>
-          <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 700;"><i class="fa-solid fa-crown"></i> Exclusivo Superadmin (Frank)</span>
+          <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 700;"><i class="fa-solid fa-crown"></i> Exclusivo Superadmin</span>
         </div>
 
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
@@ -832,7 +828,7 @@
     </div>
   </div>
 
-  <!-- Modal Admin: Autenticación & Login Seguro (Frank / Usuarios) -->
+  <!-- Modal Admin: Autenticación & Login Seguro (Usuarios) -->
   <div class="modal-overlay" id="adminLoginModal">
     <div class="modal-card" style="max-width: 440px; background: rgba(15, 17, 25, 0.95); backdrop-filter: blur(16px); border: 1.5px solid var(--accent-gold); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(230, 194, 128, 0.3);">
       <button type="button" class="modal-close" onclick="closeAdminLoginModal()">&times;</button>
@@ -842,15 +838,12 @@
           <i class="fa-solid fa-lock"></i>
         </div>
         <h3 class="text-gradient-gold" style="font-size: 1.4rem;">Acceso al Panel Admin</h3>
-        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">
-          Ingresa tus credenciales autorizadas con encriptación SHA-256.
-        </p>
       </div>
 
       <form id="adminLoginForm" onsubmit="event.preventDefault(); window.processAdminLogin(event); return false;">
         <div class="form-group">
           <label style="font-weight: 600; color: var(--accent-gold);"><i class="fa-solid fa-user"></i> Usuario</label>
-          <input type="text" class="form-control" id="loginUsername" placeholder="Ej. Frank" required autocomplete="username" style="font-size: 1rem; padding: 0.8rem;">
+          <input type="text" class="form-control" id="loginUsername" placeholder="Ej. Total Beauty" required autocomplete="username" style="font-size: 1rem; padding: 0.8rem;">
         </div>
 
         <div class="form-group">
