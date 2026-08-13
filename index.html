@@ -36,7 +36,7 @@
 /* --- ESTILOS DEL PRELOADER CON LOGO PNG --- */
 #preloader {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background-color: #0b0b0d; display: flex;
+  background-color: #000000; display: flex;
   justify-content: center; align-items: center;
   z-index: 999999; transition: opacity 0.8s ease, visibility 0.8s ease;
 }
@@ -175,6 +175,9 @@ window.addEventListener("load", function () {
         <button type="button" class="switch-btn active" data-tab="tab-salon">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Servicios en Salón de Belleza
         </button>
+        <button type="button" class="switch-btn" data-tab="tab-paquetes">
+          <i class="fa-solid fa-pump-soap"></i> Paquetes Excusivos
+        </button>
         <button type="button" class="switch-btn" data-tab="tab-cursos">
           <i class="fa-solid fa-certificate"></i>Cursos Disponibles para inscripción
         </button>
@@ -190,6 +193,105 @@ window.addEventListener("load", function () {
       <div class="services-grid" id="servicesGridContainer"></div>
     </div>
 
+        <!-- Tab paquetes -->
+    <div class="tab-content active" id="tab-paquetes">
+
+      <div class="services-grid">
+<div class="service-card" style="position: relative;">
+      <div>
+        <div style="position: relative; width: 100%; height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
+          <img src="images/paquetes/bodaportada.png" alt="Lifting de Pestañas" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/course_nails.jpg'">
+          <div style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 0.35rem 0.8rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; border: 1.5px solid #fff; box-shadow: 0 4px 12px rgba(231,76,60,0.6); z-index: 5;"><i class="fa-solid fa-fire"></i>  Exclusivo</div>
+        </div>
+        <h3 class="service-title">Paquete de Boda</h3>
+        <div class="service-price">$4,500 MXN</div>
+        <p class="service-desc">Vive una experiencia integral de belleza y relajación diseñada especialmente para el gran día. Este paquete reúne los servicios esenciales para garantizar que luzcas radiante de pies a cabeza, con un estilo impecable, sofisticado y duradero que realzará tu belleza natural en cada momento de celebración.</p>
+      </div>
+      <div>
+        <button type="button" class="btn btn-gold" style="width: 100%" onclick="paqboda()">
+          <i class="fa-solid fa-calendar-plus"></i> Mas Información
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="service-card" style="position: relative;">
+      <div>
+        <div style="position: relative; width: 100%; height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
+          <img src="images/paquetes/xvportada.png" alt="Lifting de Pestañas" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/course_nails.jpg'">
+          <div style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 0.35rem 0.8rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; border: 1.5px solid #fff; box-shadow: 0 4px 12px rgba(231,76,60,0.6); z-index: 5;"><i class="fa-solid fa-fire"></i>  Exclusivo</div>
+        </div>
+        <h3 class="service-title">Paquete XV Años</h3>
+        <div class="service-price">$3,999 MXN</div>
+        <p class="service-desc">Una experiencia de belleza integral diseñada especialmente para hacerte brillar en un día tan importante. Reúne los servicios esenciales para consentirte, resaltar tu belleza natural y lograr un estilo radiante, fresco y duradero que te hará lucir espectacular durante toda tu celebración.</p>
+      </div>
+      <div>
+        
+        <button type="button" class="btn btn-gold" style="width: 100%" onclick="paqxv()">
+          <i class="fa-solid fa-calendar-plus"></i> Mas Información
+        </button>
+      </div>
+    </div>
+
+    <div class="service-card" style="position: relative;">
+      <div>
+        <div style="position: relative; width: 100%; height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
+          <img src="images/paquetes/graduacionportada.png" alt="Lifting de Pestañas" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/course_nails.jpg'">
+          <div style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 0.35rem 0.8rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; border: 1.5px solid #fff; box-shadow: 0 4px 12px rgba(231,76,60,0.6); z-index: 5;"><i class="fa-solid fa-fire"></i>  Exclusivo</div>
+        </div>
+        <h3 class="service-title">Paquete Graduación</h3>
+        <div class="service-price">$1,950 MXN</div>
+        <p class="service-desc">Una experiencia creada para que celebres tu éxito, te consientas y vivas tu gran día sintiéndote absolutamente espectacular.</p>
+      </div>
+      <div>
+        
+        <button type="button" class="btn btn-gold" style="width: 100%" onclick="paqgrad()">
+          <i class="fa-solid fa-calendar-plus"></i> Mas Información
+        </button>
+      </div>
+    </div>
+
+
+        <div class="service-card" style="position: relative;">
+      <div>
+        <div style="position: relative; width: 100%; height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem;">
+          <img src="images/paquetes/socialportada.png" alt="Lifting de Pestañas" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='images/course_nails.jpg'">
+          <div style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 0.35rem 0.8rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; border: 1.5px solid #fff; box-shadow: 0 4px 12px rgba(231,76,60,0.6); z-index: 5;"><i class="fa-solid fa-fire"></i>  Exclusivo</div>
+        </div>
+        <h3 class="service-title">Paquete Maquillaje & Peinado Social</h3>
+        <div class="service-price">$1,200 MXN</div>
+        <p class="service-desc">Una experiencia creada para consentirte, realzar tu belleza y hacerte sentir absolutamente espectacular en tu ocasión especial.</p>
+      </div>
+      <div>
+        
+        <button type="button" class="btn btn-gold" style="width: 100%" onclick="paqmaqypeinado()">
+          <i class="fa-solid fa-calendar-plus"></i> Mas Información
+        </button>
+      </div>
+    </div>
+
+
+
+    </div>
+    </div>
+ <script>
+  function paqboda(){
+    window.location.href="paqboda.html";
+  }
+    function paqxv(){
+    window.location.href="paqxv.html";
+  }
+      function paqgrad(){
+    window.location.href="paqgrad.html";
+  }
+        function paqmaqypeinado(){
+    window.location.href="paqmaqypeinado.html";
+  }
+ </script>
     <!-- Tab 2: Cursos Presenciales & Sedes -->
     <div class="tab-content" id="tab-cursos">
       <!-- Dynamic Courses Grid -->
