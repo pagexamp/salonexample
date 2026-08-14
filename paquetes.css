@@ -1,0 +1,1343 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root{
+    --black:#030303;
+    --black-soft:#080808;
+    --black-card:#0d0d0d;
+    --gold:#d4af37;
+    --gold-light:#f4dc87;
+    --gold-bright:#ffe9a3;
+    --gold-dark:#8d6b19;
+    --white:#fff;
+    --text:#d8d8d8;
+    --muted:#999;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#030303;
+    color:var(--white);
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   FONDO PREMIUM DE BODA
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 5%,
+            rgba(212,175,55,.14),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 10% 60%,
+            rgba(212,175,55,.045),
+            transparent 30%
+        ),
+        radial-gradient(
+            ellipse at 90% 55%,
+            rgba(212,175,55,.045),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020202,
+            #080808 50%,
+            #020202
+        );
+}
+
+/* Textura muy sutil */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+
+    opacity:.12;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size:95px 95px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+}
+
+
+
+/* Footer */
+footer {
+  background: #0B0C10;
+padding: 0rem 1% 2%;
+  border-top: 1px solid var(--border-light);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+
+.footer-col {
+  text-align: center;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.footer-col p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.footer-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.footer-admin-link:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2%;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-col .social-links {
+flex-direction: column;
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-col .social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 24px;
+  color: #ffffff; /* Color del icono */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+
+.footerbutt {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    height: 70px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.footerbutt:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+
+.botonesfooter {
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =====================================================
+   DECORACIÓN DE BODA
+===================================================== */
+
+.wedding-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* Anillos */
+
+.ring{
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    border:1px solid rgba(212,175,55,.08);
+
+    border-radius:50%;
+
+    filter:blur(.2px);
+}
+
+.ring.one{
+    top:-230px;
+    right:-100px;
+}
+
+.ring.two{
+    bottom:-260px;
+    left:-130px;
+
+    width:500px;
+    height:500px;
+
+    border-color:rgba(212,175,55,.06);
+}
+
+/* Ornamentos */
+
+.ornament{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    opacity:.22;
+}
+
+.ornament::before,
+.ornament::after{
+    content:"";
+
+    position:absolute;
+
+    border:1px solid var(--gold);
+
+    border-radius:50% 0 50% 0;
+
+    transform:rotate(45deg);
+}
+
+.ornament::before{
+    width:130px;
+    height:130px;
+
+    top:35px;
+    left:35px;
+}
+
+.ornament::after{
+    width:80px;
+    height:80px;
+
+    top:60px;
+    left:60px;
+}
+
+.ornament.left{
+    left:-100px;
+    top:25%;
+}
+
+.ornament.right{
+    right:-100px;
+    bottom:25%;
+
+    transform:rotate(180deg);
+}
+
+/* =====================================================
+   PARTÍCULAS DORADAS
+===================================================== */
+
+.gold-particle{
+    position:fixed;
+
+    width:2px;
+    height:2px;
+
+    background:var(--gold-light);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 7px rgba(212,175,55,.8);
+
+    pointer-events:none;
+
+    animation:floatParticle linear infinite;
+
+    opacity:.35;
+
+    z-index:-2;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(3,3,3,.82);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(212,175,55,.22);
+
+    z-index:1000;
+
+    transition:.4s;
+}
+
+.navbar::after{
+    content:"";
+
+    position:absolute;
+    bottom:-1px;
+    left:50%;
+
+    width:120px;
+    height:1px;
+
+    transform:translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.navbar.scrolled{
+    height:70px;
+
+    background:rgba(3,3,3,.96);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.7);
+}
+
+.logo-container{
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+}
+
+.logo-container img{
+    width:160px;
+    height:auto;
+    display:block;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+}
+
+.btn-reg{
+    border:1px solid var(--gold);
+
+    border-radius:30px;
+
+    padding:11px 22px;
+
+    background:rgba(212,175,55,.03);
+
+    color:var(--gold-light);
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.btn-reg:hover{
+    background:var(--gold);
+
+    color:#000;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.35);
+
+    transform:translateY(-2px);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:static;
+
+    padding:140px 20px 100px;
+
+    overflow:hidden;
+}
+
+/* Halo dorado */
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:680px;
+    height:680px;
+
+    border:1px solid rgba(212,175,55,.11);
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 100px rgba(212,175,55,.055),
+        inset 0 0 100px rgba(212,175,55,.035);
+}
+
+/* Segundo halo */
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:510px;
+    height:510px;
+
+    border:1px solid rgba(212,175,55,.08);
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+.hero-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+    animation:heroIn 1.2s ease both;
+}
+
+/* Pequeño detalle de boda */
+
+.hero-content::before{
+    content:"✦   ♡   ✦";
+
+    display:block;
+
+    color:var(--gold);
+
+    font-size:17px;
+
+    letter-spacing:8px;
+
+    margin-bottom:25px;
+
+    opacity:.85;
+}
+
+.hero-tagline{
+    color:var(--gold);
+
+    font-size:13px;
+
+    font-weight:500;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(70px,11vw,145px);
+
+    font-weight:500;
+
+    line-height:.85;
+
+    letter-spacing:-3px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #8d6817,
+            #d4af37,
+            #fff0a5,
+            #c99d32,
+            #f5d875,
+            #a77d1c
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    background-size:250% auto;
+
+    animation:goldMove 8s linear infinite;
+
+    text-shadow:
+        0 0 35px rgba(212,175,55,.08);
+}
+
+.hero-desc{
+    max-width:700px;
+
+    margin:35px auto;
+
+    color:#aaa;
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    font-weight:300;
+}
+
+.btn-gold{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 34px;
+
+    border:1px solid var(--gold);
+
+    color:#000;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-dark),
+            var(--gold-light),
+            var(--gold)
+        );
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.4s;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.15);
+}
+
+.btn-gold:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 35px rgba(212,175,55,.3),
+        0 0 30px rgba(212,175,55,.2);
+}
+
+/* =====================================================
+   WRAPPER
+===================================================== */
+
+.wrapper{
+    width:min(1200px,92%);
+
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+
+.section-title{
+    text-align:center;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:55px;
+
+    font-weight:500;
+
+    color:#fff;
+
+    margin-bottom:60px;
+}
+
+.section-title span{
+    display:block;
+
+    font-family:'Montserrat',sans-serif;
+
+    color:var(--gold);
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+}
+
+/* =====================================================
+   PAQUETE PRINCIPAL
+===================================================== */
+
+.main-package-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+}
+
+.package-card{
+    position:relative;
+
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    border:1px solid rgba(212,175,55,.22);
+
+    overflow:hidden;
+
+    transition:.5s;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.4);
+}
+
+.package-card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.45),
+            transparent 25%,
+            transparent 75%,
+            rgba(212,175,55,.25)
+        );
+
+    opacity:0;
+
+    transition:.5s;
+}
+
+.package-card:hover{
+    transform:translateY(-10px);
+
+    border-color:var(--gold);
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.7),
+        0 0 35px rgba(212,175,55,.08);
+}
+
+.package-card:hover::before{
+    opacity:1;
+}
+
+.package-img{
+    width:100%;
+
+    height:150px;
+
+    object-fit:cover;
+
+    display:block;
+
+    filter:
+        grayscale(20%)
+        brightness(.72);
+
+    transition:.7s;
+}
+
+.package-card:hover .package-img{
+    transform:scale(1.06);
+
+    filter:
+        grayscale(0%)
+        brightness(.9);
+}
+
+/* línea dorada sobre imagen */
+
+.package-card::after{
+    content:"";
+
+    position:absolute;
+
+    left:25px;
+    right:25px;
+
+    top:265px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity:.7;
+
+    z-index:3;
+}
+
+.package-info{
+    padding:30px;
+}
+
+.package-info h3{
+    font-family:'Cormorant Garamond',serif;
+
+    color:var(--gold-light);
+
+    font-size:29px;
+
+    font-weight:500;
+
+    margin-bottom:12px;
+}
+
+.package-info p{
+    margin-top: 20%;
+    color:#999;
+
+    font-size:13px;
+    text-align: justify;
+    line-height:1.8;
+}
+
+/* =====================================================
+   DIVISOR DORADO
+===================================================== */
+
+.gold-divider{
+    width:150px;
+
+    height:1px;
+
+    margin:0 auto;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.gold-divider::before{
+    content:"♡";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    padding:0 14px;
+
+    background:#030303;
+
+    color:var(--gold);
+    border-radius: 50%;
+    font-size:18px;
+}
+
+/* =====================================================
+   LUXURY BOX
+===================================================== */
+
+.luxury-box{
+    position:relative;
+
+    margin:70px 0;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.055),
+            rgba(255,255,255,.015),
+            rgba(212,175,55,.04)
+        );
+
+    border-top:1px solid rgba(212,175,55,.35);
+
+    border-bottom:1px solid rgba(212,175,55,.35);
+
+    box-shadow:
+        inset 0 0 70px rgba(212,175,55,.025);
+}
+
+.luxury-box::before,
+.luxury-box::after{
+    position:absolute;
+
+    color:var(--gold);
+
+    font-size:25px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+}
+
+.luxury-box::before{
+    content:"✦";
+
+    left:30px;
+}
+
+.luxury-box::after{
+    content:"✦";
+
+    right:30px;
+}
+
+.luxury-box h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:50px;
+
+    font-weight:500;
+
+    color:var(--gold-light);
+
+    margin-bottom:15px;
+}
+
+.luxury-box p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#aaa;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   SERVICIOS
+===================================================== */
+
+.addons-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:15px;
+}
+
+/* Los primeros 3 */
+.addon-item:nth-child(1){
+    grid-column:1 / span 2;
+}
+
+.addon-item:nth-child(2){
+    grid-column:3 / span 2;
+}
+
+.addon-item:nth-child(3){
+    grid-column:5 / span 2;
+}
+
+/* Los últimos 2 quedan centrados */
+.addon-item:nth-child(4){
+    grid-column:2 / span 2;
+}
+
+.addon-item:nth-child(5){
+    grid-column:4 / span 2;
+}
+
+.addon-item{
+    min-height:100px;
+
+    padding:25px 18px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #080808
+        );
+
+    border:1px solid rgba(212,175,55,.17);
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+}
+
+.addon-item::before{
+    content:"✦";
+
+    position:absolute;
+
+    top:18px;
+    right:20px;
+
+    color:var(--gold);
+
+    font-size:18px;
+
+    opacity:.7;
+}
+
+.addon-item::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:0;
+    height:1px;
+
+    background:var(--gold);
+
+    transition:.4s;
+}
+
+.addon-item:hover{
+    border-color:var(--gold);
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5),
+        0 0 20px rgba(212,175,55,.06);
+}
+
+.addon-item:hover::after{
+    width:100%;
+}
+
+.addon-text h4{
+    color:var(--gold-light);
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+}
+
+.addon-text p{
+    color:#888;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding-top:20px;
+
+    text-align:center;
+
+    background:#020202;
+
+    border-top:1px solid rgba(212,175,55,.15);
+
+    position:relative;
+}
+
+footer::before{
+    content:"✦  ♡  ✦";
+
+    display:block;
+
+    color:var(--gold);
+
+    font-size:14px;
+
+    letter-spacing:8px;
+
+    margin-bottom:25px;
+
+    opacity:.8;
+}
+
+footer img{
+    width:150px;
+
+    margin-bottom:20px;
+}
+
+footer p{
+    color:#666;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes goldMove{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:250% center;
+    }
+}
+
+@keyframes floatParticle{
+
+    0%{
+        transform:
+            translateY(110vh)
+            translateX(0);
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(20px);
+    }
+
+    100%{
+        transform:
+            translateY(-10vh)
+            translateX(-20px);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+
+
+
+    .hero h1{
+        font-size:80px;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 20px;
+
+        height:70px;
+    }
+
+    .logo-container img{
+        width:130px;
+    }
+
+    .btn-reg{
+        padding:9px 15px;
+
+        font-size:10px;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:65px;
+
+        letter-spacing:-1px;
+    }
+
+    .hero-tagline{
+        font-size:10px;
+
+        letter-spacing:4px;
+    }
+
+    .hero-desc{
+        font-size:13px;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+    .section-title{
+        font-size:42px;
+    }
+
+    .main-package-grid{
+        grid-template-columns:1fr;
+    }
+
+
+
+    .addon-item:nth-child(1),
+    .addon-item:nth-child(2),
+    .addon-item:nth-child(3),
+    .addon-item:nth-child(4),
+    .addon-item:nth-child(5){
+        grid-column:auto;
+    }
+
+    .luxury-box{
+        padding:55px 25px;
+    }
+
+    .luxury-box h2{
+        font-size:40px;
+    }
+
+    .luxury-box::before,
+    .luxury-box::after{
+        display:none;
+    }
+
+    .ring{
+        transform:scale(.65);
+    }
+
+    .ornament{
+        transform:scale(.65);
+    }
+}
+
+@media(max-width:380px){
+
+    .addons-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+}
+
+    /* Estilo base de la partícula */
+.gold-particle {
+    position: fixed;
+    top: -10px; /* Empieza un poco arriba del borde superior */
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, var(--gold-light) 20%, var(--gold) 80%);
+    border-radius: 50%;
+    pointer-events: none; /* No interfiere con los clics */
+    z-index: -3; /* Se mantiene detrás del contenido */
+    box-shadow: 0 0 8px var(--gold-light);
+    animation: floatParticle linear infinite;
+}
+
+/* Animación para que caigan/floten a lo largo de la pantalla */
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
